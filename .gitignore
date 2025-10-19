@@ -431,13 +431,6 @@ FodyWeavers.xsd
 *.msp
 
 # =========================
-# Obsidian
-# =========================
-.obsidian/
-*.excalidraw
-*.canvas
-
-# =========================
 # OS generated files
 # =========================
 # Windows
@@ -488,3 +481,4 @@ vcpkg_packages/
 # =========================
 # End of File
 # =========================
+Utiliser_anciecréatures_project/Log.txt
