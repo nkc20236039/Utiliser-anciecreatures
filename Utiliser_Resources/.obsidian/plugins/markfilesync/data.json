@@ -1,0 +1,53 @@
+{
+  "markwhenPath": "00_予定/GanttChart.mw",
+  "notesFolderPath": "00_予定/タスク",
+  "enableBidirectionalSync": true,
+  "enableAutoSync": false,
+  "autoSyncInterval": "60",
+  "customProperty": "status",
+  "propertyConfig": {
+    "dateProperty": "date",
+    "endDateProperty": "endDate",
+    "allowInlineProperties": false
+  },
+  "bidirectionalSyncConfig": {
+    "syncDates": true,
+    "syncStatus": true,
+    "syncGroup": true
+  },
+  "tagConfig": {
+    "propertyName": "tags",
+    "tags": [],
+    "requireAllTags": false
+  },
+  "groupingConfig": {
+    "enabled": true,
+    "propertyName": "group",
+    "sortBy": "date",
+    "sortEntriesBy": "date"
+  },
+  "formattingConfig": {
+    "showStatusTags": true,
+    "dateFormat": "YYYY-MM-DD",
+    "groupStartText": "group",
+    "groupEndText": "end group",
+    "supportISODateFormat": true
+  },
+  "filterConfig": {
+    "excludeStatus": [],
+    "enableDateFilter": false,
+    "dateFilterType": "all",
+    "excludeFolders": []
+  },
+  "notificationConfig": {
+    "enabled": true,
+    "detailLevel": "normal",
+    "showErrors": true
+  },
+  "debugConfig": {
+    "enabled": false,
+    "logLevel": "error",
+    "dryRun": false
+  },
+  "timelineHeader": ""
+}

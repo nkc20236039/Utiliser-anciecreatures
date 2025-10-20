@@ -1,0 +1,236 @@
+{
+  "main": {
+    "id": "841cae8f67eb4def",
+    "type": "split",
+    "children": [
+      {
+        "id": "21c03cfde452279d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8623a3566d3d1c21",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "無題のファイル.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "無題のファイル"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "0cc5da8c1cbca187",
+    "type": "split",
+    "children": [
+      {
+        "id": "c6e3693783a60512",
+        "type": "tabs",
+        "dimension": 63.32046332046331,
+        "children": [
+          {
+            "id": "37a5ee9bbabecb7e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "ファイルエクスプローラ"
+            }
+          },
+          {
+            "id": "2843140da6a43aef",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "検索"
+            }
+          },
+          {
+            "id": "31005c278d1a396f",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "ブックマーク"
+            }
+          }
+        ]
+      },
+      {
+        "id": "5047fd8942d775ab",
+        "type": "tabs",
+        "dimension": 36.67953667953668,
+        "children": [
+          {
+            "id": "29eda61a1e75e3c4",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "023114d45c0a2370",
+    "type": "split",
+    "children": [
+      {
+        "id": "65b411a369db3535",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4d96561dcc82838b",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "フリーキャンバス.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "フリーキャンバスへのバックリンク"
+            }
+          },
+          {
+            "id": "0972a4696528b102",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "タグ"
+            }
+          },
+          {
+            "id": "cf3dcf73bc210022",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "無題のファイル.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "無題のファイルのアウトライン"
+            }
+          },
+          {
+            "id": "8dfea50e109fc3b2",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "フリーキャンバス.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "フリーキャンバスからのアウトゴーイングリンク"
+            }
+          }
+        ],
+        "currentTab": 2
+      },
+      {
+        "id": "ecb67ed51435300f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2b347e6c4c49a39b",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:Create new base": false,
+      "switcher:クイックスイッチャーを開く": false,
+      "graph:グラフビューを開く": false,
+      "canvas:新規キャンバスを作成": false,
+      "daily-notes:今日のデイリーノートを開く": false,
+      "templates:テンプレートを挿入": false,
+      "obsidian-git:Open Git source control": false,
+      "command-palette:コマンドパレットを開く": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "excel:Create Excel File": false,
+      "mermaid-tools:Open Mermaid Toolbar": false,
+      "markfilesync:Sync timeline": false,
+      "markwhen:Create new Markwhen file": false
+    }
+  },
+  "active": "8623a3566d3d1c21",
+  "lastOpenFiles": [
+    "00_予定/タスク/プロジェクトのセットアップ.md",
+    "00_予定/GanttChart.mw",
+    "フリーキャンバス.md",
+    "00_予定/タスク/ゲームループの作成.md",
+    "00_予定/タスク/3Dモデルの描画テスト.md",
+    "00_予定/タスク/ゲームオブジェクトの作成.md",
+    "00_予定/タスク/入力処理.md",
+    "無題のファイル.md",
+    "2025-10-17.md",
+    "2025-10-21.md",
+    "GanttChart.mw",
+    "timeline.mw",
+    "Markwhen/Markwhen 10-17-2025 12.39.28.mw",
+    "予定/タスク/timeline.mw",
+    "Markwhen",
+    "00_予定/タスク",
+    "00_予定",
+    "Markwhen/Markwhen 10-17-2025 12.18.03.mw",
+    "Excalidraw",
+    "Welcome.md",
+    "Excalidraw/Drawing 2025-10-17 11.55.01.excalidraw.md"
+  ]
+}
