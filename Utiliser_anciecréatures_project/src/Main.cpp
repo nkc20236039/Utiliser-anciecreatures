@@ -1,4 +1,5 @@
 #include "DxLib.h"
+#include "SceneManager/SceneStateMachine.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 	// ‰Šú‰»‘O‚ÌƒAƒvƒŠİ’è

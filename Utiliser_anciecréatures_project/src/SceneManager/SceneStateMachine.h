@@ -2,7 +2,7 @@
 #pragma once
 
 #include <unordered_map>
-#include <typeinfo>
+#include <typeindex>
 #include <memory>
 
 #include "IScene.h"
@@ -12,6 +12,8 @@ concept IsScene = std::is_base_of_v<IScene, T>;
 
 class SceneStateMachine {
 public:
+	SceneStateMachine(std::type_index firstSceneType, std::unique_ptr<IScene> firstSceneInstance);
+
 	/// <summary>
 	/// シーンの変更をする
 	/// </summary>
@@ -30,19 +32,21 @@ public:
 	/// <typeparam name="T">登録するシーン型</typeparam>
 	/// <param name="instance">登録するシーンのポインタ</param>
 	template<IsScene T>
-	void Register(std::unique_ptr<T> instance);
+	void Register(std::unique_ptr<IScene> instance);
 	/// <summary>
 	/// シーンを登録解除する
 	/// </summary>
 	/// <typeparam name="T">登録解除するシーン型</typeparam>
 	/// <param name="instance">登録解除するシーンのポインタ</param>
 	template<IsScene T>
-	void Unregister(std::unique_ptr<T> instance);
+	void Unregister(std::unique_ptr<IScene> instance);
 
 private:
 	// 登録されているシーン
-	std::unordered_map<std::type_info, std::unique_ptr<IScene>> m_scenes;
+	std::unordered_map<std::type_index, std::unique_ptr<IScene>> m_scenes;
 
 	// 現在のシーンインスタンス
-	IScene& m_currentScene;
+	IScene* m_currentScene;
+	// 前回のインスタンス(比較に使用)
+	IScene* m_previousScene;
 };
