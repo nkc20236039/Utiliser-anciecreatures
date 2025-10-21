@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "無題のファイル.md",
+                "file": "00_予定/タスク/ゲームオブジェクトの作成.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "無題のファイル"
+              "title": "ゲームオブジェクトの作成"
             }
           }
         ]
@@ -146,13 +146,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "無題のファイル.md",
+                "file": "00_予定/タスク/ゲームオブジェクトの作成.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "無題のファイルのアウトライン"
+              "title": "ゲームオブジェクトの作成のアウトライン"
             }
           },
           {
@@ -161,16 +161,26 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "フリーキャンバス.md",
+                "file": "00_予定/タスク/ゲームオブジェクトの作成.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "フリーキャンバスからのアウトゴーイングリンク"
+              "title": "ゲームオブジェクトの作成からのアウトゴーイングリンク"
+            }
+          },
+          {
+            "id": "6079bdf1d962d1b1",
+            "type": "leaf",
+            "state": {
+              "type": "mermaid-toolbar-view",
+              "state": {},
+              "icon": "trident-custom",
+              "title": "Mermaid Toolbar"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 4
       },
       {
         "id": "ecb67ed51435300f",
@@ -211,14 +221,14 @@
   },
   "active": "8623a3566d3d1c21",
   "lastOpenFiles": [
+    "00_予定/タスク/入力処理.md",
+    "00_予定/タスク/ゲームループの作成.md",
+    "無題のファイル.md",
     "00_予定/タスク/プロジェクトのセットアップ.md",
     "00_予定/GanttChart.mw",
     "フリーキャンバス.md",
-    "00_予定/タスク/ゲームループの作成.md",
     "00_予定/タスク/3Dモデルの描画テスト.md",
     "00_予定/タスク/ゲームオブジェクトの作成.md",
-    "00_予定/タスク/入力処理.md",
-    "無題のファイル.md",
     "2025-10-17.md",
     "2025-10-21.md",
     "GanttChart.mw",
