@@ -1,35 +1,30 @@
-#include "SceneStateMachine.h"
+ï»¿#include "SceneStateMachine.h"
 
-SceneStateMachine::SceneStateMachine(std::type_index firstSceneType, std::unique_ptr<IScene> firstSceneInstance) :
-	m_currentScene(firstSceneInstance.get()),
-	m_scenes{ {firstSceneType, std::move(firstSceneInstance)} } {
-	// ‰Šú‰»
-
-}
+SceneStateMachine::SceneStateMachine() : m_previousScene(), m_currentScene(), m_scenes() {}
 
 template<IsScene T>
 void SceneStateMachine::ChangeState() {
-	// ‘O‰ñ‚ÌƒV[ƒ“‚ğ•Û‘¶
+	// å‰å›ã®ã‚·ãƒ¼ãƒ³ã‚’ä¿å­˜
 	m_previousScene = m_currentScene;
-	// V‚µ‚¢ƒV[ƒ“‚Ìİ’è
-	// TODO:: ‘¶İƒ`ƒFƒbƒN
+	// æ–°ã—ã„ã‚·ãƒ¼ãƒ³ã®è¨­å®š
+	// TODO:: å­˜åœ¨ãƒã‚§ãƒƒã‚¯
 	m_currentScene = m_scenes[typeid(T)];
 }
 
 void SceneStateMachine::Update() {
-	// Exit‚ÆEnter‚ğÀs‚·‚é•K—v‚ª‚ ‚éê‡
+	// Exitã¨Enterã‚’å®Ÿè¡Œã™ã‚‹å¿…è¦ãŒã‚ã‚‹å ´åˆ
 	if (m_previousScene != m_currentScene) {
-		// ‘O‰ñ‚ÌƒV[ƒ“‚ªİ’è‚³‚ê‚Ä‚¢‚éê‡
+		// å‰å›ã®ã‚·ãƒ¼ãƒ³ãŒè¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆ
 		if (m_previousScene != nullptr) {
-			// Exit‚ğÀs
+			// Exitã‚’å®Ÿè¡Œ
 			m_previousScene->Exit();
 		}
 
-		// V‚µ‚¢ƒV[ƒ“‚ÌEnter‚ğÀs
+		// æ–°ã—ã„ã‚·ãƒ¼ãƒ³ã®Enterã‚’å®Ÿè¡Œ
 		m_currentScene->Enter();
 	}
 
-	// ƒV[ƒ“‚ÌXV
+	// ã‚·ãƒ¼ãƒ³ã®æ›´æ–°
 	m_currentScene->Update();
 }
 

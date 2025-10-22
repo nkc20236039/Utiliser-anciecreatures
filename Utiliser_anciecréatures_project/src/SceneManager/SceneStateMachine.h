@@ -1,4 +1,4 @@
-// ƒV[ƒ“‚Ìó‘ÔŠÇ—‚ğs‚¤ƒXƒe[ƒgƒ}ƒV[ƒ“
+ï»¿// ã‚·ãƒ¼ãƒ³ã®çŠ¶æ…‹ç®¡ç†ã‚’è¡Œã†ã‚¹ãƒ†ãƒ¼ãƒˆãƒã‚·ãƒ¼ãƒ³
 #pragma once
 
 #include <unordered_map>
@@ -12,41 +12,41 @@ concept IsScene = std::is_base_of_v<IScene, T>;
 
 class SceneStateMachine {
 public:
-	SceneStateMachine(std::type_index firstSceneType, std::unique_ptr<IScene> firstSceneInstance);
+	SceneStateMachine();
 
 	/// <summary>
-	/// ƒV[ƒ“‚Ì•ÏX‚ğ‚·‚é
+	/// ã‚·ãƒ¼ãƒ³ã®å¤‰æ›´ã‚’ã™ã‚‹
 	/// </summary>
-	/// <typeparam name="T">•ÏX‚·‚éƒV[ƒ“Œ^</typeparam>
+	/// <typeparam name="T">å¤‰æ›´ã™ã‚‹ã‚·ãƒ¼ãƒ³å‹</typeparam>
 	template<IsScene T>
 	void ChangeState();
 
 	/// <summary>
-	/// Œ»İ‚ÌƒV[ƒ“‚ğXV‚·‚é
+	/// ç¾åœ¨ã®ã‚·ãƒ¼ãƒ³ã‚’æ›´æ–°ã™ã‚‹
 	/// </summary>
 	void Update();
 
 	/// <summary>
-	/// ƒV[ƒ“‚ğ“o˜^‚·‚é
+	/// ã‚·ãƒ¼ãƒ³ã‚’ç™»éŒ²ã™ã‚‹
 	/// </summary>
-	/// <typeparam name="T">“o˜^‚·‚éƒV[ƒ“Œ^</typeparam>
-	/// <param name="instance">“o˜^‚·‚éƒV[ƒ“‚Ìƒ|ƒCƒ“ƒ^</param>
+	/// <typeparam name="T">ç™»éŒ²ã™ã‚‹ã‚·ãƒ¼ãƒ³å‹</typeparam>
+	/// <param name="instance">ç™»éŒ²ã™ã‚‹ã‚·ãƒ¼ãƒ³ã®ãƒã‚¤ãƒ³ã‚¿</param>
 	template<IsScene T>
 	void Register(std::unique_ptr<IScene> instance);
 	/// <summary>
-	/// ƒV[ƒ“‚ğ“o˜^‰ğœ‚·‚é
+	/// ã‚·ãƒ¼ãƒ³ã‚’ç™»éŒ²è§£é™¤ã™ã‚‹
 	/// </summary>
-	/// <typeparam name="T">“o˜^‰ğœ‚·‚éƒV[ƒ“Œ^</typeparam>
-	/// <param name="instance">“o˜^‰ğœ‚·‚éƒV[ƒ“‚Ìƒ|ƒCƒ“ƒ^</param>
+	/// <typeparam name="T">ç™»éŒ²è§£é™¤ã™ã‚‹ã‚·ãƒ¼ãƒ³å‹</typeparam>
+	/// <param name="instance">ç™»éŒ²è§£é™¤ã™ã‚‹ã‚·ãƒ¼ãƒ³ã®ãƒã‚¤ãƒ³ã‚¿</param>
 	template<IsScene T>
 	void Unregister(std::unique_ptr<IScene> instance);
 
 private:
-	// “o˜^‚³‚ê‚Ä‚¢‚éƒV[ƒ“
+	// ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚·ãƒ¼ãƒ³
 	std::unordered_map<std::type_index, std::unique_ptr<IScene>> m_scenes;
 
-	// Œ»İ‚ÌƒV[ƒ“ƒCƒ“ƒXƒ^ƒ“ƒX
+	// ç¾åœ¨ã®ã‚·ãƒ¼ãƒ³ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
 	IScene* m_currentScene;
-	// ‘O‰ñ‚ÌƒCƒ“ƒXƒ^ƒ“ƒX(”äŠr‚Ég—p)
+	// å‰å›ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹(æ¯”è¼ƒã«ä½¿ç”¨)
 	IScene* m_previousScene;
 };

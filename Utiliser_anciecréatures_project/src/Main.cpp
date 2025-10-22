@@ -1,8 +1,8 @@
-#include "DxLib.h"
+ï»¿#include "DxLib.h"
 #include "SceneManager/SceneStateMachine.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
-	// ‰Šú‰»‘O‚ÌƒAƒvƒŠİ’è
+	// åˆæœŸåŒ–å‰ã®ã‚¢ãƒ—ãƒªè¨­å®š
 #ifdef _DEBUG
 	ChangeWindowMode(TRUE);
 	SetOutApplicationLogValidFlag(TRUE);
@@ -11,24 +11,29 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetOutApplicationLogValidFlag(FALSE);
 #endif
 
-	// ‚c‚wƒ‰ƒCƒuƒ‰ƒŠ‚Ì‰Šú‰»
+	// ï¼¤ï¼¸ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®åˆæœŸåŒ–
 	if (DxLib_Init() < 0) {
-		// ƒGƒ‰[‚ª”­¶‚µ‚½‚ç’¼‚¿‚ÉI—¹
+		// ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ãŸã‚‰ç›´ã¡ã«çµ‚äº†
 		return -1;
 	}
 
-	// •`‰ææ‰æ–Ê‚ğ— ‰æ–Ê‚ÉƒZƒbƒg
+	// æç”»å…ˆç”»é¢ã‚’è£ç”»é¢ã«ã‚»ãƒƒãƒˆ
 	SetDrawScreen(DX_SCREEN_BACK);
 
-	// ‚yƒoƒbƒtƒ@‚ğ—LŒø‚É‚·‚é
+	// ï¼ºãƒãƒƒãƒ•ã‚¡ã‚’æœ‰åŠ¹ã«ã™ã‚‹
 	SetUseZBuffer3D(TRUE);
 
-	// ‚yƒoƒbƒtƒ@‚Ö‚Ì‘‚«‚İ‚ğ—LŒø‚É‚·‚é
+	// ï¼ºãƒãƒƒãƒ•ã‚¡ã¸ã®æ›¸ãè¾¼ã¿ã‚’æœ‰åŠ¹ã«ã™ã‚‹
 	SetWriteZBuffer3D(TRUE);
 
-	// ‚c‚wƒ‰ƒCƒuƒ‰ƒŠ‚ÌŒãn––
+	// ã‚²ãƒ¼ãƒ ãƒ«ãƒ¼ãƒ—
+	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0) {
+
+	}
+
+	// ï¼¤ï¼¸ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®å¾Œå§‹æœ«
 	DxLib_End();
 
-	// ƒ\ƒtƒg‚ÌI—¹
+	// ã‚½ãƒ•ãƒˆã®çµ‚äº†
 	return 0;
 }
