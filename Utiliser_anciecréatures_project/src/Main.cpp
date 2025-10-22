@@ -1,5 +1,6 @@
 ﻿#include "DxLib.h"
 #include "SceneManager/SceneStateMachine.h"
+#include "Utility/OutputLog.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 	// 初期化前のアプリ設定
@@ -28,7 +29,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	// ゲームループ
 	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0) {
-
+		
 	}
 
 	// ＤＸライブラリの後始末
