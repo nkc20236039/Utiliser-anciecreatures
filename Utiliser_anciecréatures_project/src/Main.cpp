@@ -1,4 +1,4 @@
-/*********************************************************************
+﻿/*********************************************************************
  * file   Main.cpp
  * brief  
  * 
@@ -7,7 +7,7 @@
  * last_modified 2025/10/22
  *********************************************************************/
 
-﻿#include "DxLib.h"
+#include "DxLib.h"
 #include "SceneManager/SceneStateMachine.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
