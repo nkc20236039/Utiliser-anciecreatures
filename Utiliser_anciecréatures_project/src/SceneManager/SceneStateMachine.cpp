@@ -1,13 +1,4 @@
-﻿/*********************************************************************
- * file   SceneStateMachine.cpp
- * brief
- *
- * author nkc20236039
- * created 2025/10/21
- * last_modified 2025/10/22
- *********************************************************************/
-
-#include "SceneStateMachine.h"
+﻿#include "SceneStateMachine.h"
 
 SceneStateMachine::SceneStateMachine() : m_previousScene(), m_currentScene(), m_scenes() {}
 

@@ -1,13 +1,4 @@
-﻿/*********************************************************************
- * file   SceneStateMachine.h
- * brief
- *
- * author nkc20236039
- * created 2025/10/21
- * last_modified 2025/10/22
- *********************************************************************/
-
-#pragma once
+﻿#pragma once
 
 #include <unordered_map>
 #include <typeindex>

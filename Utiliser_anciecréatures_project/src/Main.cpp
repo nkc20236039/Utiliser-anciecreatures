@@ -1,13 +1,4 @@
-﻿/*********************************************************************
- * file   Main.cpp
- * brief  
- * 
- * author nkc20236039
- * created 2025/10/20
- * last_modified 2025/10/22
- *********************************************************************/
-
-#include "DxLib.h"
+﻿#include "DxLib.h"
 #include "SceneManager/SceneStateMachine.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
