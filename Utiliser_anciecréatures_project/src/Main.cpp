@@ -1,6 +1,10 @@
-﻿#include "DxLib.h"
+﻿#include <memory>
+#include <Windows.h>
+
+#include "DxLib.h"
 #include "SceneManager/SceneStateMachine.h"
-#include "Utility/OutputLog.h"
+#include "InGame/Scenes/TitleScene.h"
+#include "InGame/Scenes/GameScene.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 	// 初期化前のアプリ設定
@@ -27,9 +31,22 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	// Ｚバッファへの書き込みを有効にする
 	SetWriteZBuffer3D(TRUE);
 
+	// シーンの登録
+	SceneStateMachine sceneManager;
+
+	sceneManager.Register<TitleScene>(std::make_unique<TitleScene>());
+	sceneManager.Register<GameScene>(std::make_unique<GameScene>());
+
 	// ゲームループ
 	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0) {
-		
+		// 画面をクリア
+		ClearDrawScreen();
+
+		// シーンの更新
+		sceneManager.Update();
+
+		// 裏画面の内容を表画面に反映する
+		ScreenFlip();
 	}
 
 	// ＤＸライブラリの後始末

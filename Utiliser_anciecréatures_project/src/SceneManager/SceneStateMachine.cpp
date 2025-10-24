@@ -1,15 +1,7 @@
 ﻿#include "SceneStateMachine.h"
 
-SceneStateMachine::SceneStateMachine() : m_previousScene(), m_currentScene(), m_scenes() {}
 
-template<IsScene T>
-void SceneStateMachine::ChangeState() {
-	// 前回のシーンを保存
-	m_previousScene = m_currentScene;
-	// 新しいシーンの設定
-	// TODO:: 存在チェック
-	m_currentScene = m_scenes[typeid(T)];
-}
+SceneStateMachine::SceneStateMachine() : m_previousScene(nullptr), m_currentScene(nullptr), m_scenes() {}
 
 void SceneStateMachine::Update() {
 	// ExitとEnterを実行する必要がある場合
@@ -19,6 +11,10 @@ void SceneStateMachine::Update() {
 			// Exitを実行
 			m_previousScene->Exit();
 		}
+		else {	// 前回のシーンが未設定の場合
+			// 前回のシーンに現在のシーンを入れる
+			m_previousScene = m_currentScene;
+		}
 
 		// 新しいシーンのEnterを実行
 		m_currentScene->Enter();
@@ -26,14 +22,4 @@ void SceneStateMachine::Update() {
 
 	// シーンの更新
 	m_currentScene->Update();
-}
-
-template<IsScene T>
-void SceneStateMachine::Register(std::unique_ptr<IScene> instance) {
-	m_scenes[typeid(T)] = instance;
-}
-
-template<IsScene T>
-void SceneStateMachine::Unregister(std::unique_ptr<IScene> instance) {
-
 }
