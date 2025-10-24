@@ -148,6 +148,7 @@
   <ItemGroup>
     <ClInclude Include="src\InGame\Scenes\GameScene.h" />
     <ClInclude Include="src\InGame\Scenes\TitleScene.h" />
+    <ClInclude Include="src\MasterData\MasterData.h" />
     <ClInclude Include="src\SceneManager\IScene.h" />
     <ClInclude Include="src\SceneManager\SceneStateMachine.h" />
     <ClInclude Include="src\Utility\OutputLog.h" />
