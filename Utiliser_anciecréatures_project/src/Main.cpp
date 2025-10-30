@@ -39,7 +39,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	// シーンの登録
 	SceneStateMachine sceneManager;
 
-	sceneManager.Register<TitleScene>(std::make_unique<TitleScene>());
+	sceneManager.Register<TitleScene>(std::make_unique<TitleScene>(&sceneManager));
 	sceneManager.Register<GameScene>(std::make_unique<GameScene>());
 
 	// ゲームループ

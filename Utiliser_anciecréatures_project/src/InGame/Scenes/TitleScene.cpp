@@ -1,5 +1,6 @@
 ﻿#include "TitleScene.h"
 #include "DxLib.h"
+#include "InGame/Scenes/GameScene.h"
 
 // ゲームシーンに入ったときの初期化処理
 void TitleScene::Enter() {
@@ -7,7 +8,11 @@ void TitleScene::Enter() {
 }
 
 // ゲームシーンの更新処理
-void TitleScene::Update() {}
+void TitleScene::Update() {
+	if (CheckHitKey(KEY_INPUT_SPACE)) {
+		m_sceneManager->ChangeScene<GameScene>();
+	}
+}
 
 // ゲームシーンから出るときの終了処理
 void TitleScene::Exit() {}
