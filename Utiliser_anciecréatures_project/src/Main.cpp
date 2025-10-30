@@ -5,6 +5,7 @@
 #include "SceneManager/SceneStateMachine.h"
 #include "InGame/Scenes/TitleScene.h"
 #include "InGame/Scenes/GameScene.h"
+#include "MasterData/MasterData.h"
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 	// 初期化前のアプリ設定
@@ -30,6 +31,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	// Ｚバッファへの書き込みを有効にする
 	SetWriteZBuffer3D(TRUE);
+
+	MasterData::Load();
+
+	auto i = MasterData::Get<TestMaster>();
 
 	// シーンの登録
 	SceneStateMachine sceneManager;

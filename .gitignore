@@ -470,6 +470,7 @@ output/
 dist/
 temp/
 DxLib_VC3_24f
+nlohmann_3.12.0
 
 # If you use Conan or vcpkg for dependencies
 .conan/
