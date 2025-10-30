@@ -6,11 +6,11 @@
 
 #include <format>
 
-#include "IScene.h"
+#include "SceneBase.h"
 #include "Utility/OutputLog.h"
 
 template <typename T>
-concept IsScene = std::is_base_of_v<IScene, T>;
+concept IsScene = std::is_base_of_v<SceneBase, T>;
 
 class SceneStateMachine {
 public:
@@ -46,7 +46,7 @@ public:
 	/// <typeparam name="T">登録するシーン型</typeparam>
 	/// <param name="instance">登録するシーンのポインタ</param>
 	template<IsScene T>
-	void Register(std::unique_ptr<IScene> instance) {
+	void Register(std::unique_ptr<SceneBase> instance) {
 		// シーンの登録
 		m_scenes.try_emplace(typeid(T), std::move(instance));
 
@@ -69,10 +69,10 @@ public:
 
 private:
 	// 登録されているシーン
-	std::unordered_map<std::type_index, std::unique_ptr<IScene>> m_scenes;
+	std::unordered_map<std::type_index, std::unique_ptr<SceneBase>> m_scenes;
 
 	// 現在のシーンインスタンス
-	IScene* m_currentScene;
+	SceneBase* m_currentScene;
 	// 前回のインスタンス(比較に使用)
-	IScene* m_previousScene;
+	SceneBase* m_previousScene;
 };

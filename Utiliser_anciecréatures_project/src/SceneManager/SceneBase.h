@@ -1,8 +1,10 @@
 ﻿#pragma once
 
-class IScene {
+#include "GameObject/GameObject.h"
+
+class SceneBase {
 public:
-	virtual ~IScene() = default;
+	virtual ~SceneBase() = default;
 	/// <summary>
 	/// シーンの初期化を行う
 	/// </summary>
@@ -15,4 +17,7 @@ public:
 	/// シーンの終了処理を行う
 	/// </summary>
 	virtual void Exit() = 0;
+
+private:
+	
 };

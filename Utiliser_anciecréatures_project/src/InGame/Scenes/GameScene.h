@@ -1,8 +1,8 @@
 ﻿#pragma once
 
-#include "SceneManager/IScene.h"
+#include "SceneManager/SceneBase.h"
 
-class GameScene final : public IScene {
+class GameScene final : public SceneBase {
 public:
 	GameScene() = default;
 	~GameScene() override = default;

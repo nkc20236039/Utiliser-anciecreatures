@@ -1,9 +1,9 @@
 ﻿#pragma once
 
-#include "SceneManager/IScene.h"
+#include "SceneManager/SceneBase.h"
 #include "SceneManager/SceneStateMachine.h"
 
-class TitleScene final : public IScene {
+class TitleScene final : public SceneBase {
 public:
 	TitleScene(SceneStateMachine* sceneManager) : m_sceneManager(sceneManager) {}
 	~TitleScene() override = default;
