@@ -7,7 +7,7 @@
 
 #include "MasterData/Loader/MasterPathArray.h"
 
-static class MasterData {
+class MasterData {
 public:
 	static void Load() {
 		// 現在のマスターデータを削除

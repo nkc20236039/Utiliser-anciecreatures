@@ -4,7 +4,7 @@
 #include <string>
 #include <source_location>
 
-static class OutputLog {
+class OutputLog {
 public:
 	static void Comment(std::string message, const std::source_location& location = std::source_location::current());
 	static void Warning(std::string message, const std::source_location& location = std::source_location::current());
