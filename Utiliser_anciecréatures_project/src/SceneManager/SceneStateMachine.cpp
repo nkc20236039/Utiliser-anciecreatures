@@ -1,6 +1,5 @@
 ﻿#include "SceneStateMachine.h"
 
-
 SceneStateMachine::SceneStateMachine() : m_previousScene(nullptr), m_currentScene(nullptr), m_scenes() {}
 
 void SceneStateMachine::Update() {
@@ -21,5 +20,5 @@ void SceneStateMachine::Update() {
 	}
 
 	// シーンの更新
-	m_currentScene->Update();
+	m_currentScene->UpdateGameObjects();
 }

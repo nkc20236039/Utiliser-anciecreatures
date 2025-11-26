@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "GameObject/GameObject.h"
+#include "GameObject/Manager/GameObjectManager.h"
 
 class SceneBase {
 public:
@@ -10,14 +10,15 @@ public:
 	/// </summary>
 	virtual void Enter() = 0;
 	/// <summary>
-	/// シーンの更新を行う
-	/// </summary>
-	virtual void Update() = 0;
-	/// <summary>
 	/// シーンの終了処理を行う
 	/// </summary>
 	virtual void Exit() = 0;
+	/// <summary>
+	/// シーン内のゲームオブジェクトを更新する
+	/// </summary>
+	void UpdateGameObjects();
 
-private:
-	
+protected:
+	// シーン内のゲームオブジェクトリスト
+	GameObjectManager m_gameObjectManager;
 };

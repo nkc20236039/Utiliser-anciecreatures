@@ -5,11 +5,11 @@
 
 class TitleScene final : public SceneBase {
 public:
-	TitleScene(SceneStateMachine* sceneManager) : m_sceneManager(sceneManager) {}
+	TitleScene(SceneStateMachine* sceneManager) 
+		: m_sceneManager(sceneManager) {}
 	~TitleScene() override = default;
 
 	virtual void Enter() override;
-	virtual void Update() override;
 	virtual void Exit() override;
 
 private:

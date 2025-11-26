@@ -151,14 +151,18 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\GameObject\Manager\GameObjectManager.cpp" />
     <ClCompile Include="src\InGame\Scenes\GameScene.cpp" />
     <ClCompile Include="src\InGame\Scenes\TitleScene.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\SceneManager\SceneBase.cpp" />
     <ClCompile Include="src\SceneManager\SceneStateMachine.cpp" />
     <ClCompile Include="src\Utility\OutputLog.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GameObject\DemoObject.h" />
     <ClInclude Include="src\GameObject\GameObject.h" />
+    <ClInclude Include="src\GameObject\Manager\GameObjectManager.h" />
     <ClInclude Include="src\InGame\Scenes\GameScene.h" />
     <ClInclude Include="src\InGame\Scenes\TitleScene.h" />
     <ClInclude Include="src\MasterData\Loader\MasterPathArray.h" />
