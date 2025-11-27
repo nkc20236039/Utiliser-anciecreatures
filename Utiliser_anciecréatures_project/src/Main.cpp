@@ -7,7 +7,11 @@
 #include "InGame/Scenes/GameScene.h"
 #include "MasterData/MasterData.h"
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
+int WINAPI WinMain(
+	_In_ HINSTANCE hInstance,
+	_In_opt_ HINSTANCE hPrevInstance,
+	_In_ LPSTR lpCmdLine,
+	_In_ int nShowCmd) {
 	// 初期化前のアプリ設定
 #ifdef _DEBUG
 	ChangeWindowMode(TRUE);
@@ -32,9 +36,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	// Ｚバッファへの書き込みを有効にする
 	SetWriteZBuffer3D(TRUE);
 
+	// マスターの読み込み
 	MasterData::Load();
-
-	auto i = MasterData::Get<TestMaster>();
 
 	// シーンの登録
 	SceneStateMachine sceneManager;
