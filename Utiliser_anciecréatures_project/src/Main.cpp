@@ -2,7 +2,7 @@
 #include <Windows.h>
 
 #include "DxLib.h"
-#include "SceneManager/SceneStateMachine.h"
+#include "SceneManager/SceneManager.h"
 #include "InGame/Scenes/TitleScene.h"
 #include "InGame/Scenes/GameScene.h"
 #include "MasterData/MasterData.h"
@@ -39,11 +39,8 @@ int WINAPI WinMain(
 	// マスターの読み込み
 	MasterData::Load();
 
-	// シーンの登録
-	SceneStateMachine sceneManager;
-
-	sceneManager.Register<TitleScene>(std::make_unique<TitleScene>(&sceneManager));
-	sceneManager.Register<GameScene>(std::make_unique<GameScene>());
+	// 最初のシーンをタイトルシーンに設定
+	SceneManager::Get().ChangeScene<TitleScene>();
 
 	// ゲームループ
 	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0) {
@@ -51,7 +48,7 @@ int WINAPI WinMain(
 		ClearDrawScreen();
 
 		// シーンの更新
-		sceneManager.Update();
+		SceneManager::Get().Update();
 
 		// 裏画面の内容を表画面に反映する
 		ScreenFlip();

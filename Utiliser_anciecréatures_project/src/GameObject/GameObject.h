@@ -10,13 +10,16 @@ public:
 		m_rotation({ 0.0f, 0.0f, 0.0f }) {}
 	virtual ~GameObject() = default;
 
+	// 初期化処理
 	virtual void Start() = 0;
+	// 毎フレームの更新処理
 	virtual void Tick() = 0;
 
+	// アクティブ状態の取得
 	bool IsActive() const { return m_isActive; }
 
 private:
-	bool m_isActive;
+	bool   m_isActive;
 	VECTOR m_position;
 	VECTOR m_scale;
 	VECTOR m_rotation;
