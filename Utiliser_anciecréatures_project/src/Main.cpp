@@ -4,8 +4,8 @@
 #include "DxLib.h"
 #include "SceneManager/SceneManager.h"
 #include "InGame/Scenes/TitleScene.h"
-#include "InGame/Scenes/GameScene.h"
 #include "MasterData/MasterData.h"
+#include "Frame/FrameManager.h"
 
 int WINAPI WinMain(
 	_In_ HINSTANCE hInstance,
@@ -27,6 +27,9 @@ int WINAPI WinMain(
 		return -1;
 	}
 
+	// VSyncを無効にする
+	SetWaitVSyncFlag(FALSE);
+
 	// 描画先画面を裏画面にセット
 	SetDrawScreen(DX_SCREEN_BACK);
 
@@ -42,16 +45,26 @@ int WINAPI WinMain(
 	// 最初のシーンをタイトルシーンに設定
 	SceneManager::Get().ChangeScene<TitleScene>();
 
+	// フレームマネージャーの生成
+	FrameManager frame;
+	Time time = frame.MeasurementStart();
+
 	// ゲームループ
 	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0) {
+		// フレーム時間の計測開始
+		time = frame.MeasurementStart();
+
 		// 画面をクリア
 		ClearDrawScreen();
 
 		// シーンの更新
 		SceneManager::Get().Update();
-
+		frame.ShowFPS(100);
 		// 裏画面の内容を表画面に反映する
 		ScreenFlip();
+
+		// フレーム時間の計測終了
+		time = frame.MeasurementEnd();
 	}
 
 	// ＤＸライブラリの後始末

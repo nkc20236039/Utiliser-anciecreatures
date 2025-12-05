@@ -151,6 +151,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Frame\FrameManager.cpp" />
     <ClCompile Include="src\GameObject\Manager\GameObjectManager.cpp" />
     <ClCompile Include="src\InGame\Scenes\GameScene.cpp" />
     <ClCompile Include="src\InGame\Scenes\TitleScene.cpp" />
@@ -160,6 +161,8 @@
     <ClCompile Include="src\Utility\OutputLog.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Frame\FrameManager.h" />
+    <ClInclude Include="src\Frame\Time.h" />
     <ClInclude Include="src\GameObject\DemoObject.h" />
     <ClInclude Include="src\GameObject\GameObject.h" />
     <ClInclude Include="src\GameObject\Manager\GameObjectManager.h" />
