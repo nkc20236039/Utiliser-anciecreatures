@@ -27,9 +27,6 @@ int WINAPI WinMain(
 		return -1;
 	}
 
-	// VSyncを無効にする
-	//SetWaitVSyncFlag(FALSE);
-
 	// 描画先画面を裏画面にセット
 	SetDrawScreen(DX_SCREEN_BACK);
 
@@ -47,7 +44,10 @@ int WINAPI WinMain(
 
 	// フレームマネージャーの生成
 	FrameManager frame;
+	// 最初の画面表示までのフレーム時間を計測
 	Time time = frame.MeasurementStart();
+	ScreenFlip();
+	time = frame.MeasurementEnd();
 
 	// ゲームループ
 	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0) {
