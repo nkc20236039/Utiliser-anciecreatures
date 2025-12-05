@@ -1,10 +1,10 @@
 ﻿#include "SceneBase.h"
 
-void SceneBase::UpdateGameObjects() {
+void SceneBase::UpdateGameObjects(const Time& time) {
 	// 新しいゲームオブジェクトを更新サイクルに追加
 	m_gameObjectManager.ProcessSpawn();
 	// ゲームオブジェクトを更新
-	m_gameObjectManager.Update();
+	m_gameObjectManager.Update(time);
 	// 破棄予定のゲームオブジェクトを更新サイクルから削除
 	m_gameObjectManager.ProcessDestroy();
 }

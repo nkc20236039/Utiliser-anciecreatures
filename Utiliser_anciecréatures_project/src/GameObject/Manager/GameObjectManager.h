@@ -4,6 +4,7 @@
 #include <vector>
 
 #include "GameObject/GameObject.h"
+#include "Frame/Time.h"
 
 template <typename T>
 concept IsGameObject = std::is_base_of_v<GameObject, T>;
@@ -21,7 +22,7 @@ public:
 	/// <summary>
 	/// ゲームオブジェクトを更新する
 	/// </summary>
-	void Update();
+	void Update(const Time& time);
 
 	/// <summary>
 	/// 破棄予定のゲームオブジェクトを更新サイクルから削除する

@@ -28,7 +28,7 @@ int WINAPI WinMain(
 	}
 
 	// VSyncを無効にする
-	SetWaitVSyncFlag(FALSE);
+	//SetWaitVSyncFlag(FALSE);
 
 	// 描画先画面を裏画面にセット
 	SetDrawScreen(DX_SCREEN_BACK);
@@ -58,7 +58,7 @@ int WINAPI WinMain(
 		ClearDrawScreen();
 
 		// シーンの更新
-		SceneManager::Get().Update();
+		SceneManager::Get().Update(time);
 		frame.ShowFPS(100);
 		// 裏画面の内容を表画面に反映する
 		ScreenFlip();

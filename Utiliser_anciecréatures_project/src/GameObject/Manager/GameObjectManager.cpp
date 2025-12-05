@@ -12,12 +12,12 @@ void GameObjectManager::ProcessSpawn() {
 	m_spawnedRequests.clear();
 }
 
-void GameObjectManager::Update() {
+void GameObjectManager::Update(const Time& time) {
 	for (auto& gameObject : m_gameObjects) {
 		// 非アクティブなオブジェクトはスキップ
 		if (!gameObject->IsActive()) { continue; }
 		// ゲームオブジェクトを更新
-		gameObject->Tick();
+		gameObject->Update(time);
 	}
 }
 

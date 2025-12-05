@@ -1,6 +1,6 @@
 ﻿#include "SceneManager.h"
 
-void SceneManager::Update() {
+void SceneManager::Update(const Time& time) {
 	// シーン切り替えが要求されている場合
 	if (m_nextSceneFactory) {
 		// 現在のシーンが存在すれば終了処理を行う
@@ -22,5 +22,5 @@ void SceneManager::Update() {
 	if (!m_currentScene) { return; }
 
 	// ゲームオブジェクトの更新
-	m_currentScene->UpdateGameObjects();
+	m_currentScene->UpdateGameObjects(time);
 }

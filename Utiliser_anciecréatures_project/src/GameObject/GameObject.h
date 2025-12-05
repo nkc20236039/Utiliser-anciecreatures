@@ -1,6 +1,8 @@
 ﻿#pragma once
 #include "DxLib.h"
 
+#include "Frame/Time.h"
+
 class GameObject {
 public:
 	GameObject()
@@ -13,7 +15,7 @@ public:
 	// 初期化処理
 	virtual void Start() = 0;
 	// 毎フレームの更新処理
-	virtual void Tick() = 0;
+	virtual void Update(const Time& time) = 0;
 
 	// アクティブ状態の取得
 	bool IsActive() const { return m_isActive; }

@@ -45,10 +45,10 @@ void FrameManager::ShowFPS(int span) {
 	// spanの時間経過したらFPSを計算して表示
 	if (span <= (currentTime - d_lastTime) && m_deltaTime != 0.0f) {
 		// deltaTimeからFPSを計算する
-		d_lastFPS = 1.0f / m_deltaTime;
+		d_lastFPS = static_cast<int>(1.0f / m_deltaTime);
 		d_lastTime = currentTime;
 	}
-	
+
 	// 画面にFPSを表示
 	DrawFormatString(0, 0, GetColor(255, 0, 255), "FPS: %d", d_lastFPS);
 }

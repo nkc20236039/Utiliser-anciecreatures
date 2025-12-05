@@ -4,6 +4,7 @@
 #include <functional>
 
 #include "Utility/Singleton.h"
+#include "Frame/Time.h"
 #include "SceneBase.h"
 
 template<typename T>
@@ -27,7 +28,7 @@ public:
 	/// <summary>
 	/// シーンの更新を行う
 	/// </summary>
-	void Update();
+	void Update(const Time& time);
 
 private:
 	SceneManager() = default;

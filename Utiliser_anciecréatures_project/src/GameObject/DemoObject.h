@@ -6,5 +6,5 @@
 class DemoObject final : public GameObject {
 	void Start() override {}
 
-	void Tick() override {}
+	void Update(const Time& time) override {}
 };

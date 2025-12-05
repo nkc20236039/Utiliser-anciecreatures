@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "GameObject/Manager/GameObjectManager.h"
+#include "Frame/Time.h"
 
 class SceneBase {
 public:
@@ -16,7 +17,7 @@ public:
 	/// <summary>
 	/// シーン内のゲームオブジェクトを更新する
 	/// </summary>
-	void UpdateGameObjects();
+	void UpdateGameObjects(const Time& time);
 
 protected:
 	// シーン内のゲームオブジェクトリスト
