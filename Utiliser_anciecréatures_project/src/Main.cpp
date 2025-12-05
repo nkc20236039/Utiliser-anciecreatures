@@ -6,6 +6,7 @@
 #include "InGame/Scenes/TitleScene.h"
 #include "MasterData/MasterData.h"
 #include "Frame/FrameManager.h"
+#include "System/OutputLog.h"
 
 int WINAPI WinMain(
 	_In_ HINSTANCE hInstance,
@@ -59,9 +60,17 @@ int WINAPI WinMain(
 
 		// シーンの更新
 		SceneManager::Get().Update(time);
+
+#if _DEBUG
+		// 0.1秒ごとにFPSを表示
 		frame.ShowFPS(100);
+#endif
+
 		// 裏画面の内容を表画面に反映する
 		ScreenFlip();
+
+		// デバッグ用描画ログをクリア
+		OUTPUT_LOG::ClearDisplayLog();
 
 		// フレーム時間の計測終了
 		time = frame.MeasurementEnd();

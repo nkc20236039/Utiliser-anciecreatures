@@ -20,7 +20,7 @@ public:
 	// アクティブ状態の取得
 	bool IsActive() const { return m_isActive; }
 
-private:
+protected:
 	bool   m_isActive;
 	VECTOR m_position;
 	VECTOR m_scale;

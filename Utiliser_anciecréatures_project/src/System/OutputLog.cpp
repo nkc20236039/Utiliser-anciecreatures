@@ -1,13 +1,14 @@
 ﻿#include "OutputLog.h"
 
-#include <windows.h>
 #include <sstream>
 #include <chrono>
 #include <iomanip>
-#include <codecvt>
-#include <locale>
+
+#include "DxLib.h"
 
 using namespace std::chrono;
+
+int OutputLog::d_logDisplayPosY = 0;
 
 void OutputLog::Comment(std::string message, const std::source_location& location) {
 	// 通常メッセージを送信
@@ -22,6 +23,31 @@ void OutputLog::Warning(std::string message, const std::source_location& locatio
 void OutputLog::Error(std::string message, const std::source_location& location) {
 	// エラーメッセージを送信
 	Output('x', message, location);
+}
+
+void OutputLog::DrawDisplayLog(unsigned int color, const TCHAR* formatString, ...) {
+	// 可変引数の取得
+	va_list args;
+	va_start(args, formatString);
+
+	// バッファにフォーマットして格納
+	TCHAR buffer[1024];
+#ifdef UNICODE
+	vswprintf_s(buffer, 1024, formatString, args);
+#else
+	vsprintf_s(buffer, formatString, args);
+#endif
+	va_end(args);
+
+	// 画面に表示
+	DrawString(0, d_logDisplayPosY, buffer, color);
+	// 表示位置を更新
+	d_logDisplayPosY += LINE_SPACING;
+}
+
+void OutputLog::ClearDisplayLog() {
+	// 表示位置を初期化
+	d_logDisplayPosY = 0;
 }
 
 std::string OutputLog::GetDate() {
@@ -57,7 +83,7 @@ std::wstring OutputLog::Utf8ToWide(const std::string& str) {
 
 void OutputLog::Output(char messageIcon, std::string message, const std::source_location& location) {
 	// 文字の作成
-	std::string log = std::format("<{}>[{}] {}\n{} (at {}:{})\n",
+	std::string log = std::format("\n<{}>[{}] {}\n{} (at {}:{})\n\n",
 		messageIcon,
 		GetDate(),
 		message,

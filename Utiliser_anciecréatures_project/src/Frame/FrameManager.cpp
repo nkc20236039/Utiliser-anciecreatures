@@ -1,6 +1,8 @@
 ﻿#include "FrameManager.h"
 
-#include <DxLib.h>
+#include "DxLib.h"
+
+#include "System/OutputLog.h"
 
 FrameManager::FrameManager()
 	: m_bootTime(GetNowCount()),
@@ -50,6 +52,6 @@ void FrameManager::ShowFPS(int span) {
 	}
 
 	// 画面にFPSを表示
-	DrawFormatString(0, 0, GetColor(255, 0, 255), "FPS: %d", d_lastFPS);
+	OUTPUT_LOG::DrawDisplayLog(GetColor(255, 0, 255), "FPS: %d", d_lastFPS);
 }
 #endif
