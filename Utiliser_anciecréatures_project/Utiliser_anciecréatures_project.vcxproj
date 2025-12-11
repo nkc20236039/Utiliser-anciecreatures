@@ -175,6 +175,7 @@
     <ClInclude Include="src\MasterData\Struct\TestMaster.h" />
     <ClInclude Include="src\SceneManager\SceneBase.h" />
     <ClInclude Include="src\SceneManager\SceneManager.h" />
+    <ClInclude Include="src\System\Delegate.h" />
     <ClInclude Include="src\System\OutputLog.h" />
     <ClInclude Include="src\System\Singleton.h" />
   </ItemGroup>

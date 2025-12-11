@@ -17,7 +17,7 @@ Time FrameManager::MeasurementStart() {
 	m_count = nowCount;
 
 	// フレーム数をインクリメント
-	++m_frame;
+	m_frame++;
 
 	// アプリ起動からの経過時間を計算
 	float elapsedTime = (nowCount - m_bootTime) / 1000.0f;	// 1000.0 => 1000ミリ秒を1秒に変換するため
