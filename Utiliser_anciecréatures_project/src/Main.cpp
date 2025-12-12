@@ -28,6 +28,10 @@ int WINAPI WinMain(
 		return -1;
 	}
 
+	// 画面比率をセット
+	SetWindowSize(800, 450);
+	SetWindowSizeExtendRate(1, 1);
+
 	// 描画先画面を裏画面にセット
 	SetDrawScreen(DX_SCREEN_BACK);
 

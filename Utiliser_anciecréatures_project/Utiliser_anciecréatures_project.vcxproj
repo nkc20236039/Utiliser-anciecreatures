@@ -163,10 +163,12 @@
   <ItemGroup>
     <ClInclude Include="src\Frame\FrameManager.h" />
     <ClInclude Include="src\Frame\Time.h" />
-    <ClInclude Include="src\GameObject\DemoObject.h" />
+    <ClInclude Include="src\InGame\GameObject\GameDemoObject.h" />
+    <ClInclude Include="src\InGame\GameObject\TitleDemoObject.h" />
     <ClInclude Include="src\GameObject\GameObject.h" />
     <ClInclude Include="src\GameObject\Manager\GameObjectManager.h" />
     <ClInclude Include="src\InGame\Scenes\GameScene.h" />
+    <ClInclude Include="src\InGame\Scenes.h" />
     <ClInclude Include="src\InGame\Scenes\TitleScene.h" />
     <ClInclude Include="src\MasterData\Loader\MasterPathArray.h" />
     <ClInclude Include="src\MasterData\MasterLoader.h" />
