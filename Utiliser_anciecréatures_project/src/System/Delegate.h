@@ -44,11 +44,11 @@ public:
 	/// メンバー関数の追加
 	/// </summary>
 	/// <returns>追加した関数の識別ID</returns>
-	template <class T, class MemFn>
-	std::uint64_t Add(T* obj, MemFn memFn) {
+	template <class TFunction, class TMember>
+	std::uint64_t Add(TFunction* func, TMember memberFunction) {
 		static_assert(
-			std::is_member_function_pointer_v<MemFn>,
-			"Delegate::Add: memFn must be member function pointer"
+			std::is_member_function_pointer_v<TMember>,
+			"Delegate::Add: memberFunction must be member function pointer"
 			);
 
 		// IDを更新
@@ -58,8 +58,8 @@ public:
 		m_functions.emplace_back(
 			FunctionData{
 				m_nextId,
-				[obj, memFn](Args... args) -> Ret {
-					return std::invoke(memFn, obj, std::forward<Args>(args)...);
+				[func, memberFunction](Args... args) -> Ret {
+					return std::invoke(memberFunction, func, std::forward<Args>(args)...);
 				}
 			}
 		);
@@ -95,14 +95,14 @@ public:
 
 	// 呼び出し
 	void Invoke(Args... args) const {
-		for (const auto& e : m_functions) {
-			e.func(std::forward<Args>(args)...);
+		for (const auto& function : m_functions) {
+			function.func(std::forward<Args>(args)...);
 		}
 	}
 
 private:
 	struct FunctionData {
-		/*public*/
+	public:
 		std::uint64_t id;
 		std::function<Ret(Args...)> func;
 	};
