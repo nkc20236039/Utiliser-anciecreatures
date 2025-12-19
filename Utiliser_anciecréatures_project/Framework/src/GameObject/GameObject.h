@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "DxLib.h"
 
-#include "Frame/Time.h"
+#include "src/Frame/Time.h"
 
 class GameObject {
 public:

@@ -1,12 +1,11 @@
 ﻿#include <memory>
 #include <Windows.h>
 
-#include "DxLib.h"
-#include "SceneManager/SceneManager.h"
-#include "InGame/Scenes/TitleScene.h"
-#include "MasterData/MasterData.h"
-#include "Frame/FrameManager.h"
-#include "System/OutputLog.h"
+#include "src/SceneManager/SceneManager.h"
+#include "../GameSource/Scenes/TitleScene.h"
+#include "src/MasterData/MasterData.h"
+#include "src/Frame/FrameManager.h"
+#include "src/System/OutputLog.h"
 
 int WINAPI WinMain(
 	_In_ HINSTANCE hInstance,
@@ -22,10 +21,10 @@ int WINAPI WinMain(
 	SetOutApplicationLogValidFlag(FALSE);
 #endif
 
-	// ＤＸライブラリの初期化
+	// DxLibの初期化
 	if (DxLib_Init() < 0) {
 		// エラーが発生したら直ちに終了
-		return -1;
+		return false;
 	}
 
 	// 描画先画面を裏画面にセット

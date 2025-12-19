@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -76,7 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\DxLib_VC3_24f;$(SolutionDir)src;$(ProjectDir)..\nlohmann_3.12.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\DxLib_VC3_24f;$(SolutionDir)framework;$(SolutionDir)framework/include;$(ProjectDir)..\nlohmann_3.12.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
@@ -97,7 +97,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\DxLib_VC3_24f;$(SolutionDir)src;$(ProjectDir)..\nlohmann_3.12.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\DxLib_VC3_24f;$(SolutionDir)framework;$(SolutionDir)framework/include;$(ProjectDir)..\nlohmann_3.12.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
@@ -116,7 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\DxLib_VC3_24f;$(SolutionDir)src;$(ProjectDir)..\nlohmann_3.12.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\DxLib_VC3_24f;$(SolutionDir)framework;$(SolutionDir)framework/include;$(ProjectDir)..\nlohmann_3.12.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
@@ -137,7 +137,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\DxLib_VC3_24f;$(SolutionDir)src;$(ProjectDir)..\nlohmann_3.12.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\DxLib_VC3_24f;$(SolutionDir)framework;$(SolutionDir)framework/include;$(ProjectDir)..\nlohmann_3.12.0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
@@ -151,32 +151,38 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Frame\FrameManager.cpp" />
-    <ClCompile Include="src\GameObject\Manager\GameObjectManager.cpp" />
-    <ClCompile Include="src\InGame\Scenes\GameScene.cpp" />
-    <ClCompile Include="src\InGame\Scenes\TitleScene.cpp" />
-    <ClCompile Include="src\Main.cpp" />
-    <ClCompile Include="src\SceneManager\SceneBase.cpp" />
-    <ClCompile Include="src\SceneManager\SceneManager.cpp" />
-    <ClCompile Include="src\System\OutputLog.cpp" />
+    <ClCompile Include="Framework\src\Frame\FrameManager.cpp" />
+    <ClCompile Include="Framework\src\GameObject\Manager\GameObjectManager.cpp" />
+    <ClCompile Include="Framework\src\Library\Wrapper.cpp" />
+    <ClCompile Include="GameSource\Scenes\GameScene.cpp" />
+    <ClCompile Include="GameSource\Scenes\TitleScene.cpp" />
+    <ClCompile Include="GameSource\Main.cpp" />
+    <ClCompile Include="Framework\src\SceneManager\SceneBase.cpp" />
+    <ClCompile Include="Framework\src\SceneManager\SceneManager.cpp" />
+    <ClCompile Include="Framework\FrameworkRoot.cpp" />
+    <ClCompile Include="Framework\src\System\OutputLog.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Frame\FrameManager.h" />
-    <ClInclude Include="src\Frame\Time.h" />
-    <ClInclude Include="src\GameObject\DemoObject.h" />
-    <ClInclude Include="src\GameObject\GameObject.h" />
-    <ClInclude Include="src\GameObject\Manager\GameObjectManager.h" />
-    <ClInclude Include="src\InGame\Scenes\GameScene.h" />
-    <ClInclude Include="src\InGame\Scenes\TitleScene.h" />
-    <ClInclude Include="src\MasterData\Loader\MasterPathArray.h" />
-    <ClInclude Include="src\MasterData\MasterLoader.h" />
-    <ClInclude Include="src\MasterData\Loader\TestMasterLoader.h" />
-    <ClInclude Include="src\MasterData\MasterData.h" />
-    <ClInclude Include="src\MasterData\Struct\TestMaster.h" />
-    <ClInclude Include="src\SceneManager\SceneBase.h" />
-    <ClInclude Include="src\SceneManager\SceneManager.h" />
-    <ClInclude Include="src\System\OutputLog.h" />
-    <ClInclude Include="src\System\Singleton.h" />
+    <ClInclude Include="Framework\include\Library\Wrapper.h" />
+    <ClInclude Include="Framework\src\Frame\FrameManager.h" />
+    <ClInclude Include="Framework\src\Frame\Time.h" />
+    <ClInclude Include="Framework\src\GameObject\DemoObject.h" />
+    <ClInclude Include="Framework\src\GameObject\GameObject.h" />
+    <ClInclude Include="Framework\src\GameObject\Manager\GameObjectManager.h" />
+    <ClInclude Include="Framework\GlobalFunctions.h" />
+    <ClInclude Include="Framework\src\Library\Converter.h" />
+    <ClInclude Include="GameSource\Scenes\GameScene.h" />
+    <ClInclude Include="GameSource\Scenes\TitleScene.h" />
+    <ClInclude Include="Framework\src\MasterData\Loader\MasterPathArray.h" />
+    <ClInclude Include="Framework\src\MasterData\MasterLoader.h" />
+    <ClInclude Include="Framework\src\MasterData\Loader\TestMasterLoader.h" />
+    <ClInclude Include="Framework\src\MasterData\MasterData.h" />
+    <ClInclude Include="Framework\src\MasterData\Struct\TestMaster.h" />
+    <ClInclude Include="Framework\src\SceneManager\SceneBase.h" />
+    <ClInclude Include="Framework\src\SceneManager\SceneManager.h" />
+    <ClInclude Include="Framework\FrameworkRoot.h" />
+    <ClInclude Include="Framework\src\System\OutputLog.h" />
+    <ClInclude Include="Framework\src\System\Singleton.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

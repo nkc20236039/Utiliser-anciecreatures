@@ -2,8 +2,8 @@
 
 #include <string>
 
-#include "MasterData/MasterLoader.h"
-#include "MasterData/Struct/TestMaster.h"
+#include "src/MasterData/MasterLoader.h"
+#include "src/MasterData/Struct/TestMaster.h"
 
 class TestMasterLoader : public MasterLoader {
 public:

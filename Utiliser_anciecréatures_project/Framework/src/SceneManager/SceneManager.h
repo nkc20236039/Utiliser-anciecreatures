@@ -3,8 +3,8 @@
 #include <memory>
 #include <functional>
 
-#include "System/Singleton.h"
-#include "Frame/Time.h"
+#include "src/System/Singleton.h"
+#include "src/Frame/Time.h"
 #include "SceneBase.h"
 
 template<typename T>

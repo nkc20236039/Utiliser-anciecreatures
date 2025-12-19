@@ -2,7 +2,7 @@
 
 #include "DxLib.h"
 
-#include "System/OutputLog.h"
+#include "src/System/OutputLog.h"
 
 FrameManager::FrameManager()
 	: m_bootTime(GetNowCount()),

@@ -2,7 +2,7 @@
 
 #include <array>
 
-#include "MasterData/MasterLoader.h"
+#include "src/MasterData/MasterLoader.h"
 
 #include "TestMasterLoader.h"
 
@@ -11,6 +11,6 @@ public:
 	MasterLoaders() = default;
 	~MasterLoaders() = default;
 	std::array<std::unique_ptr<MasterLoader>, 1> MasterDatas = {
-		std::make_unique<TestMasterLoader>("assets/MasterData/TestMaster.json"),
+		std::make_unique<TestMasterLoader>("Assets/MasterData/TestMaster.json"),
 	};
 };

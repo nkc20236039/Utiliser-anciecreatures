@@ -3,8 +3,8 @@
 #include <memory>
 #include <vector>
 
-#include "GameObject/GameObject.h"
-#include "Frame/Time.h"
+#include "src/GameObject/GameObject.h"
+#include "src/Frame/Time.h"
 
 template <typename T>
 concept IsGameObject = std::is_base_of_v<GameObject, T>;

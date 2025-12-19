@@ -1,7 +1,7 @@
 ﻿#include "TitleScene.h"
 #include "DxLib.h"
 
-#include "GameObject/DemoObject.h"	
+#include "src/GameObject/DemoObject.h"	
 
 // ゲームシーンに入ったときの初期化処理
 void TitleScene::Enter() {
