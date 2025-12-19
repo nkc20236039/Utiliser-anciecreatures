@@ -1,7 +1,7 @@
 ﻿#include "FrameworkRoot.h"
-using namespace UFramework;
+#include "Library/Wrapper.h"
 
-#include <DxLib.h>
+using namespace UFramework;
 
 // public:
 bool FrameworkRoot::Run() {
@@ -10,7 +10,7 @@ bool FrameworkRoot::Run() {
 		return false;
 	}
 
-	while (ProcessMessage() == 0) {
+	while (Library::ProcessMessage()) {
 		// メインループの実行
 		if (!MainLoop()) {
 			break;
@@ -25,18 +25,21 @@ bool FrameworkRoot::Run() {
 bool FrameworkRoot::Initialize() {
 	// 初期化前のアプリ設定
 #ifdef _DEBUG
-	ChangeWindowMode(TRUE);
-	SetOutApplicationLogValidFlag(TRUE);
+	Library::ChangeWindowMode(true);
+	Library::SetOutApplicationLogValidFlag(true);
 #else
-	ChangeWindowMode(FALSE);
-	SetOutApplicationLogValidFlag(FALSE);
+	Library::ChangeWindowMode(false);
+	Library::SetOutApplicationLogValidFlag(false);
 #endif
 
-	// DxLibの初期化
-	if (DxLib_Init() < 0) {
+	// 初期化
+	if (!Library::Init()) {
 		// エラーが発生したら直ちに終了
 		return false;
 	}
+
+	// 描画先画面を裏画面にセット
+	Library::SetDrawScreen(Library::ScreenTarget::Back);
 
 	return true;
 }
@@ -46,7 +49,7 @@ bool FrameworkRoot::MainLoop() {
 	return true;
 }
 
-void FrameworkRoot::Finalize() {
-	// DxLibの終了処理
-	DxLib_End();
+bool FrameworkRoot::Finalize() {
+	// 終了処理
+	return Library::Finalize();
 }

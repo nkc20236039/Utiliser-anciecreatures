@@ -9,13 +9,11 @@ public:
 
 	bool Run();
 
-
-
 private:
 	bool Initialize();
 
 	bool MainLoop();
 
-	void Finalize();
+	bool Finalize();
 };
 }

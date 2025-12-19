@@ -6,6 +6,7 @@
 #include "src/MasterData/MasterData.h"
 #include "src/Frame/FrameManager.h"
 #include "src/System/OutputLog.h"
+#include "FrameworkRoot.h"
 
 int WINAPI WinMain(
 	_In_ HINSTANCE hInstance,
@@ -21,14 +22,15 @@ int WINAPI WinMain(
 	SetOutApplicationLogValidFlag(FALSE);
 #endif
 
+	UFramework::FrameworkRoot framework;
+	framework.Run();
+	return 0;
+
 	// DxLibの初期化
 	if (DxLib_Init() < 0) {
 		// エラーが発生したら直ちに終了
 		return false;
 	}
-
-	// 描画先画面を裏画面にセット
-	SetDrawScreen(DX_SCREEN_BACK);
 
 	// Ｚバッファを有効にする
 	SetUseZBuffer3D(TRUE);
