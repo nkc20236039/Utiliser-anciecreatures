@@ -5,6 +5,8 @@
 #include <source_location>
 #include <windows.h>
 
+#include "Library/Wrapper.h"
+
 #if _DEBUG
 #define OUTPUT_LOG OutputLog
 #else
@@ -16,7 +18,7 @@ public:
 	static void Comment(std::string message, const std::source_location& location = std::source_location::current());
 	static void Warning(std::string message, const std::source_location& location = std::source_location::current());
 	static void Error(std::string message, const std::source_location& location = std::source_location::current());
-	static void DrawDisplayLog(unsigned int color, const TCHAR* formatString, ...);
+	static void DrawDisplayLog(Library::Color, const TCHAR* formatString, ...);
 	static void ClearDisplayLog();
 
 private:

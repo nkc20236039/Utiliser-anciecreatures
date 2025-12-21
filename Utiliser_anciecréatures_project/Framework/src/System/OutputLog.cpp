@@ -4,8 +4,6 @@
 #include <chrono>
 #include <iomanip>
 
-#include "DxLib.h"
-
 using namespace std::chrono;
 
 int OutputLog::d_logDisplayPosY = 0;
@@ -25,7 +23,7 @@ void OutputLog::Error(std::string message, const std::source_location& location)
 	Output('x', message, location);
 }
 
-void OutputLog::DrawDisplayLog(unsigned int color, const TCHAR* formatString, ...) {
+void OutputLog::DrawDisplayLog(Library::Color color, const TCHAR* formatString, ...) {
 	// 可変引数の取得
 	va_list args;
 	va_start(args, formatString);
@@ -40,7 +38,7 @@ void OutputLog::DrawDisplayLog(unsigned int color, const TCHAR* formatString, ..
 	va_end(args);
 
 	// 画面に表示
-	DrawString(0, d_logDisplayPosY, buffer, color);
+	Library::DrawString(0, d_logDisplayPosY, buffer, color);
 	// 表示位置を更新
 	d_logDisplayPosY += LINE_SPACING;
 }

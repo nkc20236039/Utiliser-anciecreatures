@@ -1,18 +1,17 @@
 ﻿#include "FrameManager.h"
 
-#include "DxLib.h"
-
+#include "Library/Wrapper.h"
 #include "src/System/OutputLog.h"
 
 FrameManager::FrameManager()
-	: m_bootTime(GetNowCount()),
+	: m_bootTime(Library::GetNowCount()),
 	m_count(0),
 	m_frame(0),
 	m_deltaTime(0.0f) {}
 
 Time FrameManager::MeasurementStart() {
 	// 現在の時間を取得
-	int nowCount = GetNowCount();
+	int nowCount = Library::GetNowCount();
 	// 開始時間を保存
 	m_count = nowCount;
 
@@ -28,7 +27,7 @@ Time FrameManager::MeasurementStart() {
 
 Time FrameManager::MeasurementEnd() {
 	// 現在の時間を取得
-	int nowCount = GetNowCount();
+	int nowCount = Library::GetNowCount();
 	// フレーム開始からの経過時間を計算
 	m_deltaTime = (nowCount - m_count) / 1000.0f;
 
@@ -42,7 +41,7 @@ Time FrameManager::MeasurementEnd() {
 #if _DEBUG
 void FrameManager::ShowFPS(int span) {
 	// spanごとにFPSを計算して表示
-	int currentTime = GetNowCount();
+	int currentTime = Library::GetNowCount();
 
 	// spanの時間経過したらFPSを計算して表示
 	if (span <= (currentTime - d_lastTime) && m_deltaTime != 0.0f) {
@@ -52,6 +51,6 @@ void FrameManager::ShowFPS(int span) {
 	}
 
 	// 画面にFPSを表示
-	OUTPUT_LOG::DrawDisplayLog(GetColor(255, 0, 255), "FPS: %d", d_lastFPS);
+	OUTPUT_LOG::DrawDisplayLog(Library::Color(255, 0, 255), "FPS: %d", d_lastFPS);
 }
 #endif

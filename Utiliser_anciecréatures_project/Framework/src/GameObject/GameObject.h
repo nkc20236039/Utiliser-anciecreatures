@@ -1,5 +1,6 @@
 ﻿#pragma once
-#include "DxLib.h"
+
+#include "include/Library/Wrapper.h"
 
 #include "src/Frame/Time.h"
 
@@ -22,7 +23,7 @@ public:
 
 protected:
 	bool   m_isActive;
-	VECTOR m_position;
-	VECTOR m_scale;
-	VECTOR m_rotation;
+	Library::float3 m_position;
+	Library::float3 m_scale;
+	Library::float3 m_rotation;
 };

@@ -1,5 +1,8 @@
 ﻿#include "FrameworkRoot.h"
+
 #include "Library/Wrapper.h"
+#include "src/System/OutputLog.h"
+#include "src/SceneManager/SceneManager.h"
 
 using namespace UFramework;
 
@@ -41,11 +44,39 @@ bool FrameworkRoot::Initialize() {
 	// 描画先画面を裏画面にセット
 	Library::SetDrawScreen(Library::ScreenTarget::Back);
 
+	// フレームマネージャーの生成
+	// 最初の画面表示までのフレーム時間を計測
+	m_frameManager.MeasurementStart();
+	Library::ScreenFlip();
+	m_frameManager.MeasurementEnd();
+
 	return true;
 }
 
 bool FrameworkRoot::MainLoop() {
-	// 処理メッセージ
+	// フレーム時間の計測開始
+	Time time = m_frameManager.MeasurementStart();
+
+	// 画面をクリア
+	Library::ClearDrawScreen();
+
+	// シーンの更新
+	SceneManager::Get().Update(time);
+
+#if _DEBUG
+	// 0.1秒ごとにFPSを表示
+	m_frameManager.ShowFPS(100);
+#endif
+
+	// 裏画面の内容を表画面に反映する
+	Library::ScreenFlip();
+
+	// デバッグ用描画ログをクリア
+	OUTPUT_LOG::ClearDisplayLog();
+
+	// フレーム時間の計測終了
+	time = m_frameManager.MeasurementEnd();
+
 	return true;
 }
 
