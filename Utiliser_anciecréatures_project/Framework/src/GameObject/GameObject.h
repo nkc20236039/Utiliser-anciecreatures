@@ -2,7 +2,7 @@
 
 #include "include/Library/Wrapper.h"
 
-#include "src/Frame/Time.h"
+#include "GameFrame.h"
 
 class GameObject {
 public:

@@ -4,7 +4,7 @@
 #include <vector>
 
 #include "src/GameObject/GameObject.h"
-#include "src/Frame/Time.h"
+#include "GameFrame.h"
 
 template <typename T>
 concept IsGameObject = std::is_base_of_v<GameObject, T>;

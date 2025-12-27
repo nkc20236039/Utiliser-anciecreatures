@@ -1,8 +1,8 @@
 ﻿#include "FrameworkRoot.h"
 
 #include "Library/Wrapper.h"
-#include "src/System/OutputLog.h"
-#include "src/SceneManager/SceneManager.h"
+#include "OutputLog.h"
+#include "SceneManager.h"
 
 using namespace UFramework;
 

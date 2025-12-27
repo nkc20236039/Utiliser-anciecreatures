@@ -4,7 +4,7 @@
 #include <functional>
 
 #include "src/System/Singleton.h"
-#include "src/Frame/Time.h"
+#include "GameFrame.h"
 #include "SceneBase.h"
 
 template<typename T>

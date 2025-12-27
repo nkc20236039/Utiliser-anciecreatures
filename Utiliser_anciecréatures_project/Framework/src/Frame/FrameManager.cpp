@@ -1,7 +1,7 @@
 ﻿#include "FrameManager.h"
 
 #include "Library/Wrapper.h"
-#include "src/System/OutputLog.h"
+#include "OutputLog.h"
 
 FrameManager::FrameManager()
 	: m_bootTime(Library::GetNowCount()),

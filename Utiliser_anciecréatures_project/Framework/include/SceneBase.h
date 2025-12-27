@@ -1,7 +1,7 @@
 ﻿#pragma once
 
-#include "src/GameObject/Manager/GameObjectManager.h"
-#include "src/Frame/Time.h"
+#include "GameObjectManager.h"
+#include "GameFrame.h"
 
 class SceneBase {
 public:

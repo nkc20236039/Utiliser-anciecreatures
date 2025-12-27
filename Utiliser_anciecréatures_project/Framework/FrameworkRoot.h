@@ -3,7 +3,6 @@
 #include "src/Frame/FrameManager.h"
 
 namespace UFramework {
-
 class FrameworkRoot {
 public:
 	FrameworkRoot() = default;

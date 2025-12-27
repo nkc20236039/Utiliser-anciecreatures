@@ -1,11 +1,8 @@
 ﻿#include <memory>
 #include <Windows.h>
 
-#include "src/SceneManager/SceneManager.h"
-#include "../GameSource/Scenes/TitleScene.h"
-#include "src/MasterData/MasterData.h"
-#include "src/Frame/FrameManager.h"
-#include "src/System/OutputLog.h"
+#include "SceneManager.h"
+#include "Scenes.h"
 #include "FrameworkRoot.h"
 
 int WINAPI WinMain(
@@ -14,6 +11,9 @@ int WINAPI WinMain(
 	_In_ LPSTR lpCmdLine,
 	_In_ int nShowCmd) {
 
+	SceneManager::Get().ChangeScene<TitleScene>();
+
+	// フレームワークの起動
 	UFramework::FrameworkRoot framework;
 	framework.Run();
 
