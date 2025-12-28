@@ -1,5 +1,6 @@
 ﻿#include "FrameworkRoot.h"
 
+#include "MasterData.h"
 #include "Library/Wrapper.h"
 #include "OutputLog.h"
 #include "SceneManager.h"
@@ -34,6 +35,11 @@ bool FrameworkRoot::Initialize() {
 	Library::ChangeWindowMode(false);
 	Library::SetOutApplicationLogValidFlag(false);
 #endif
+
+	// マスターデータの読み込み
+	if (!MasterData::Get().Initialize("Assets/MasterData")) {
+		return false;
+	}
 
 	// 初期化
 	if (!Library::Init()) {

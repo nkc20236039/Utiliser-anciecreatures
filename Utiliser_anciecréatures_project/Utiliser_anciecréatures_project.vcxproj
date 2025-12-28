@@ -155,6 +155,7 @@
     <ClCompile Include="Framework\src\Frame\FrameManager.cpp" />
     <ClCompile Include="Framework\src\GameObject\Manager\GameObjectManager.cpp" />
     <ClCompile Include="Framework\src\Library\Wrapper.cpp" />
+    <ClCompile Include="Framework\src\MasterData\MasterData.cpp" />
     <ClCompile Include="GameSource\Scenes\GameScene.cpp" />
     <ClCompile Include="GameSource\Scenes\TitleScene.cpp" />
     <ClCompile Include="GameSource\Main.cpp" />
@@ -175,11 +176,7 @@
     <ClInclude Include="GameSource\Scenes.h" />
     <ClInclude Include="GameSource\Scenes\GameScene.h" />
     <ClInclude Include="GameSource\Scenes\TitleScene.h" />
-    <ClInclude Include="Framework\src\MasterData\Loader\MasterPathArray.h" />
-    <ClInclude Include="Framework\src\MasterData\MasterLoader.h" />
-    <ClInclude Include="Framework\src\MasterData\Loader\TestMasterLoader.h" />
-    <ClInclude Include="Framework\src\MasterData\MasterData.h" />
-    <ClInclude Include="Framework\src\MasterData\Struct\TestMaster.h" />
+    <ClInclude Include="Framework\include\MasterData.h" />
     <ClInclude Include="Framework\include\SceneBase.h" />
     <ClInclude Include="Framework\include\SceneManager.h" />
     <ClInclude Include="Framework\FrameworkRoot.h" />

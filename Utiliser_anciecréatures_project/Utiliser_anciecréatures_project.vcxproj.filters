@@ -48,6 +48,9 @@
     <ClCompile Include="Framework\src\Library\MathWrapper.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\src\MasterData\MasterData.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\src\Frame\FrameManager.h">
@@ -71,19 +74,7 @@
     <ClInclude Include="GameSource\Scenes\TitleScene.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\src\MasterData\Loader\MasterPathArray.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\src\MasterData\MasterLoader.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\src\MasterData\Loader\TestMasterLoader.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\src\MasterData\MasterData.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\src\MasterData\Struct\TestMaster.h">
+    <ClInclude Include="Framework\include\MasterData.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Framework\include\SceneBase.h">
