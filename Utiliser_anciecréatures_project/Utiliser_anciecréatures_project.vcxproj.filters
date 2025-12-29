@@ -15,81 +15,93 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Main.cpp">
+    <ClCompile Include="Framework\src\Frame\FrameManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\InGame\Scenes\GameScene.cpp">
+    <ClCompile Include="Framework\src\GameObject\Manager\GameObjectManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\InGame\Scenes\TitleScene.cpp">
+    <ClCompile Include="GameSource\Scenes\GameScene.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\SceneManager\SceneBase.cpp">
+    <ClCompile Include="GameSource\Scenes\TitleScene.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\GameObject\Manager\GameObjectManager.cpp">
+    <ClCompile Include="GameSource\Main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\SceneManager\SceneManager.cpp">
+    <ClCompile Include="Framework\src\SceneManager\SceneBase.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\Frame\FrameManager.cpp">
+    <ClCompile Include="Framework\src\SceneManager\SceneManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="src\System\OutputLog.cpp">
+    <ClCompile Include="Framework\FrameworkRoot.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\src\System\OutputLog.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\src\Library\Wrapper.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\src\Library\MathWrapper.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\src\MasterData\MasterData.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\InGame\Scenes\GameScene.h">
+    <ClInclude Include="Framework\src\Frame\FrameManager.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\InGame\Scenes\TitleScene.h">
+    <ClInclude Include="Framework\include\GameFrame.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\MasterData\MasterData.h">
+    <ClInclude Include="Framework\src\GameObject\DemoObject.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\MasterData\MasterLoader.h">
+    <ClInclude Include="Framework\src\GameObject\GameObject.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\MasterData\Struct\TestMaster.h">
+    <ClInclude Include="Framework\include\GameObjectManager.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\MasterData\Loader\TestMasterLoader.h">
+    <ClInclude Include="GameSource\Scenes\GameScene.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\MasterData\Loader\MasterPathArray.h">
+    <ClInclude Include="GameSource\Scenes\TitleScene.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameObject\GameObject.h">
+    <ClInclude Include="Framework\include\MasterData.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\SceneManager\SceneBase.h">
+    <ClInclude Include="Framework\include\SceneBase.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameObject\Manager\GameObjectManager.h">
+    <ClInclude Include="Framework\include\SceneManager.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\GameObject\DemoObject.h">
+    <ClInclude Include="Framework\FrameworkRoot.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\SceneManager\SceneManager.h">
+    <ClInclude Include="Framework\include\OutputLog.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\Frame\FrameManager.h">
+    <ClInclude Include="Framework\src\System\Singleton.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\Frame\Time.h">
+    <ClInclude Include="Framework\include\Library\Wrapper.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\System\OutputLog.h">
+    <ClInclude Include="Framework\src\Library\Converter.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\System\Singleton.h">
+    <ClInclude Include="Framework\include\Library\MathWrapper.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="src\System\Delegate.h">
+    <ClInclude Include="GameSource\Scenes.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
