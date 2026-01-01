@@ -1,7 +1,8 @@
 ﻿#pragma once
 
-#include <memory>
+#include <vector>
 
+#include "InputMap.h"
 #include "MathWrapper.h"
 
 namespace Library {
@@ -63,6 +64,11 @@ int GetNowCount();
 
 // ウインドウモード関係
 ChangeScreenResult ChangeWindowMode(bool);
+
+// 入力関係
+bool CheckHitKeyAll(InputType);
+bool CheckHitKey(KeyCode);
+std::vector<KeyCode> GetHitKeyStateAll();
 
 // マイナー関数
 bool SetOutApplicationLogValidFlag(bool);

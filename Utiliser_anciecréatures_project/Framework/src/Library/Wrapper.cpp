@@ -4,51 +4,6 @@
 
 #include "Converter.h"
 
-int ToDxLibDrawScreen(Library::ScreenTarget screenTarget) {
-	switch (screenTarget) {
-	case Library::ScreenTarget::Front:
-		return DX_SCREEN_FRONT;
-	case Library::ScreenTarget::Back:
-		return DX_SCREEN_BACK;
-	case Library::ScreenTarget::Work:
-		return DX_SCREEN_WORK;
-	case Library::ScreenTarget::TempFront:
-		return DX_SCREEN_TEMPFRONT;
-	default:
-		return DX_SCREEN_BACK;
-	}
-}
-
-Library::ChangeScreenResult ToChangeScreenResult(int result) {
-	switch (result) {
-	case DX_CHANGESCREEN_OK:
-		return Library::ChangeScreenResult::Success;
-	case DX_CHANGESCREEN_RETURN:
-		return Library::ChangeScreenResult::Return;
-	case DX_CHANGESCREEN_DEFAULT:
-		return Library::ChangeScreenResult::Default;
-	case DX_CHANGESCREEN_REFRESHNORMAL:
-		return Library::ChangeScreenResult::RefreshNormal;
-	default:
-		return Library::ChangeScreenResult::Default;
-	}
-}
-
-int ToDxLibChangeScreen(Library::ChangeScreenResult result) {
-	switch (result) {
-	case Library::ChangeScreenResult::Success:
-		return DX_CHANGESCREEN_OK;
-	case Library::ChangeScreenResult::Return:
-		return DX_CHANGESCREEN_RETURN;
-	case Library::ChangeScreenResult::Default:
-		return DX_CHANGESCREEN_DEFAULT;
-	case Library::ChangeScreenResult::RefreshNormal:
-		return DX_CHANGESCREEN_REFRESHNORMAL;
-	default:
-		return DX_CHANGESCREEN_DEFAULT;
-	}
-}
-
 /* Color構造体定義 */
 Library::Color::Color(float r, float g, float b, float a) {
 	// 0.0~1.0に収まるように入れる
@@ -74,7 +29,6 @@ unsigned int Library::Color::GetColorCode() {
 	return DxLib::GetColor(rCode, gCode, bCode);
 }
 /* Color構造体定義終了 */
-
 
 bool Library::Init() {
 	int result = DxLib::DxLib_Init();
@@ -130,7 +84,36 @@ Library::ChangeScreenResult Library::ChangeWindowMode(bool flag) {
 	return ToChangeScreenResult(result);
 }
 
+bool Library::CheckHitKeyAll(Library::InputType inputType) {
+	int result = DxLib::CheckHitKeyAll(ToDxLibCheckInput(inputType));
+	return IsSuccessful(result);
+}
+
+bool Library::CheckHitKey(Library::KeyCode keyCode) {
+	int result = DxLib::CheckHitKey(ToDxLibKeyCode(keyCode));
+	return IsSuccessful(result);
+}
+
 bool Library::SetOutApplicationLogValidFlag(bool flag) {
 	int result = DxLib::SetOutApplicationLogValidFlag(ToDxLibBool(flag));
 	return IsSuccessful(result);
+}
+
+std::vector<Library::KeyCode> Library::GetHitKeyStateAll() {
+	// 出力用の押されているキーを格納するベクター
+	std::vector<Library::KeyCode> hitKeys;
+	// DXライブラリー用のキーを格納する配列
+	char keyBuffer[256];
+
+	// 全てのキーの状態を取得
+	DxLib::GetHitKeyStateAll(keyBuffer);
+
+	for (int key = 0; key < 256; ++key) {
+		// 押されているキーだけを格納
+		if (keyBuffer[key] == 1) {
+			hitKeys.push_back(ToLibraryKeyCode(key));
+		}
+	}
+
+	return hitKeys;
 }

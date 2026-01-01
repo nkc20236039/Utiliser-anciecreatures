@@ -2,7 +2,6 @@
 
 #include <vector>
 #include <functional>
-#include <utility>
 #include <type_traits>
 #include <cstdint>
 
@@ -48,7 +47,7 @@ public:
 	std::uint64_t Add(TFunction* func, TMember memberFunction) {
 		static_assert(
 			std::is_member_function_pointer_v<TMember>,
-			"Delegate::Add: memberFunction must be member function pointer"
+			"Delegate::Add: memberFunction must be member function pointer"	// メンバー関数ポインタである必要がある
 			);
 
 		// IDを更新
