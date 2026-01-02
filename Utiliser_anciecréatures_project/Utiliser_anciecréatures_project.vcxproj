@@ -151,7 +151,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Framework\src\InputManager\InputSystem.cpp" />
+    <ClCompile Include="Framework\src\InputManager\InputManager.cpp" />
     <ClCompile Include="Framework\src\Library\MathWrapper.cpp" />
     <ClCompile Include="Framework\src\Frame\FrameManager.cpp" />
     <ClCompile Include="Framework\src\GameObject\Manager\GameObjectManager.cpp" />

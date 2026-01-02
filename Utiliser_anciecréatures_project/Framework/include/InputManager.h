@@ -1,9 +1,31 @@
 ﻿#pragma once
 
-struct KeyMap {
+#include <vector>
 
-};
+#include "Library/Wrapper.h"
 
-class InputManager{
-
+class InputManager {
+public:
+	/// <summary>
+	/// 対象のキーが押した瞬間であるか判定する
+	/// </summary>
+	bool IsKeyDown(Library::KeyCode key);
+	/// <summary>
+	/// 対象のキーを押している状態であるか判定する
+	/// </summary>
+	bool IsKeyPressing(Library::KeyCode key);
+	/// <summary>
+	/// 対象のキーが離された瞬間であるか判定する
+	/// </summary>
+	bool IsKeyUp(Library::KeyCode key);
+	/// <summary>
+	/// 2つのキーから入力方向を取得する
+	/// </summary>
+	/// <param name="positive">プラス方向の入力キー</param>
+	/// <param name="negative">マイナス方向の入力キー</param>
+	/// <returns></returns>
+	int GetAxis(Library::KeyCode positive, Library::KeyCode negative);
+private:
+	std::vector<Library::KeyCode> m_pressedKeys;
+	std::vector<Library::KeyCode> m_canceledKeys;
 };

@@ -51,7 +51,7 @@
     <ClCompile Include="Framework\src\MasterData\MasterData.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\src\InputManager\InputSystem.cpp">
+    <ClCompile Include="Framework\src\InputManager\InputManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
