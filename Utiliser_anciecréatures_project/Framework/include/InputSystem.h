@@ -1,10 +1,15 @@
 ﻿#pragma once
 
 #include <vector>
+#include <unordered_set>
 
 #include "Library/Wrapper.h"
+#include "src/System/Singleton.h"
 
-class InputManager {
+class InputSystem : public Singleton<InputSystem> {
+	friend class Singleton<InputSystem>;
+	friend class InputManager;
+
 public:
 	/// <summary>
 	/// 対象のキーが押した瞬間であるか判定する
@@ -26,6 +31,15 @@ public:
 	/// <returns></returns>
 	int GetAxis(Library::KeyCode positive, Library::KeyCode negative);
 private:
-	std::vector<Library::KeyCode> m_pressedKeys;
-	std::vector<Library::KeyCode> m_canceledKeys;
+	InputSystem() = default;
+	~InputSystem() = default;
+
+	std::unordered_set<Library::KeyCode> m_pressedKeys;
+	std::unordered_set<Library::KeyCode> m_pressingKeys;
+	std::unordered_set<Library::KeyCode> m_canceledKeys;
+
+	/// <summary>
+	/// 入力状態の更新を行う
+	/// </summary>
+	void Update();	// InputManagerから呼び出される
 };

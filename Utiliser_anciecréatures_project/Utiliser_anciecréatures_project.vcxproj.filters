@@ -51,6 +51,9 @@
     <ClCompile Include="Framework\src\MasterData\MasterData.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\src\InputManager\InputSystem.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
     <ClCompile Include="Framework\src\InputManager\InputManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -107,13 +110,16 @@
     <ClInclude Include="GameSource\Scenes.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\include\InputManager.h">
+    <ClInclude Include="Framework\include\InputSystem.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Framework\src\System\Delegate.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Framework\include\Library\InputMap.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\src\InputManager\InputManager.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>

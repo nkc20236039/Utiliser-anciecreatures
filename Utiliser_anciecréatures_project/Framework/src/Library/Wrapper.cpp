@@ -99,16 +99,18 @@ bool Library::SetOutApplicationLogValidFlag(bool flag) {
 	return IsSuccessful(result);
 }
 
+constexpr int KEY_BUFFER_SIZE = 256;
 std::vector<Library::KeyCode> Library::GetHitKeyStateAll() {
 	// 出力用の押されているキーを格納するベクター
 	std::vector<Library::KeyCode> hitKeys;
+	hitKeys.reserve(KEY_BUFFER_SIZE);
 	// DXライブラリー用のキーを格納する配列
-	char keyBuffer[256];
+	char keyBuffer[KEY_BUFFER_SIZE];
 
 	// 全てのキーの状態を取得
 	DxLib::GetHitKeyStateAll(keyBuffer);
 
-	for (int key = 0; key < 256; ++key) {
+	for (int key = 0; key < KEY_BUFFER_SIZE; ++key) {
 		// 押されているキーだけを格納
 		if (keyBuffer[key] == 1) {
 			hitKeys.push_back(ToLibraryKeyCode(key));

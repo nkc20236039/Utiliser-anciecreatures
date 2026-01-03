@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Framework\src\InputManager\InputManager.cpp" />
+    <ClCompile Include="Framework\src\InputManager\InputSystem.cpp" />
     <ClCompile Include="Framework\src\Library\MathWrapper.cpp" />
     <ClCompile Include="Framework\src\Frame\FrameManager.cpp" />
     <ClCompile Include="Framework\src\GameObject\Manager\GameObjectManager.cpp" />
@@ -166,7 +167,7 @@
     <ClCompile Include="Framework\src\System\OutputLog.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Framework\include\InputManager.h" />
+    <ClInclude Include="Framework\include\InputSystem.h" />
     <ClInclude Include="Framework\include\Library\InputMap.h" />
     <ClInclude Include="Framework\include\Library\MathWrapper.h" />
     <ClInclude Include="Framework\include\Library\Wrapper.h" />
@@ -175,6 +176,7 @@
     <ClInclude Include="Framework\src\GameObject\DemoObject.h" />
     <ClInclude Include="Framework\src\GameObject\GameObject.h" />
     <ClInclude Include="Framework\include\GameObjectManager.h" />
+    <ClInclude Include="Framework\src\InputManager\InputManager.h" />
     <ClInclude Include="Framework\src\Library\Converter.h" />
     <ClInclude Include="Framework\src\System\Delegate.h" />
     <ClInclude Include="GameSource\Scenes.h" />

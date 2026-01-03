@@ -66,6 +66,9 @@ bool FrameworkRoot::MainLoop() {
 	// 画面をクリア
 	Library::ClearDrawScreen();
 
+	// 入力の更新
+	m_inputManager.Update();
+
 	// シーンの更新
 	SceneManager::Get().Update(time);
 
