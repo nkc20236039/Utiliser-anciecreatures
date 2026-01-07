@@ -30,6 +30,7 @@ unsigned int Library::Color::GetColorCode() {
 }
 /* Color構造体定義終了 */
 
+// 使用必須関数
 bool Library::Init() {
 	int result = DxLib::DxLib_Init();
 	return IsSuccessful(result);
@@ -45,11 +46,45 @@ bool Library::ProcessMessage() {
 	return IsSuccessful(result);
 }
 
-bool Library::DrawString(int x, int y, char* string, Color color, Color edgeColor) {
-	int result = DxLib::DrawString(x, y, string, color.GetColorCode(), edgeColor.GetColorCode());
+/* 3D関数 */
+// 3D図形描画関係関数
+bool Library::SetUseZBuffer3D(bool flag) {
+	int result = DxLib::SetUseZBuffer3D(ToDxLibBool(flag));
 	return IsSuccessful(result);
 }
 
+bool Library::SetWriteZBuffer3D(bool flag) {
+	int result = DxLib::SetWriteZBuffer3D(ToDxLibBool(flag));
+	return IsSuccessful(result);
+}
+
+// モデルの読み込み・複製関係の関数
+int Library::LoadModel(std::string fileName) {
+	return DxLib::MV1LoadModel(fileName.c_str());
+}
+
+int Library::DuplicateModel(int modelHandle) {
+	return DxLib::MV1DuplicateModel(modelHandle);
+}
+
+bool Library::DeleteModel(int modelHandle) {
+	int result = DxLib::MV1DeleteModel(modelHandle);
+	return IsSuccessful(result);
+}
+
+bool Library::DrawModel(int modelHandle) {
+	int result = DxLib::MV1DrawModel(modelHandle);
+	return IsSuccessful(result);
+}
+
+/* 一般関数 */
+// 文字描画関係関数
+bool Library::DrawString(int x, int y, std::string string, Color color, Color edgeColor) {
+	int result = DxLib::DrawString(x, y, string.c_str(), color.GetColorCode(), edgeColor.GetColorCode());
+	return IsSuccessful(result);
+}
+
+// 画面操作系関数
 bool Library::ClearDrawScreen() {
 	int result = DxLib::ClearDrawScreen();
 	return IsSuccessful(result);
@@ -65,25 +100,26 @@ bool Library::SetDrawScreen(Library::ScreenTarget screenTarget) {
 	return IsSuccessful(result);
 }
 
+bool Library::SetBackgroundColor(Library::Color color) {
+	int result = DxLib::SetBackgroundColor(
+		static_cast<int>(color.r * 255.0f),
+		static_cast<int>(color.g * 255.0f),
+		static_cast<int>(color.b * 255.0f));
+	return IsSuccessful(result);
+}
+
+// 時間関係の関数
 int Library::GetNowCount() {
 	return DxLib::GetNowCount();
 }
 
-bool Library::SetUseZBuffer3D(bool flag) {
-	int result = DxLib::SetUseZBuffer3D(ToDxLibBool(flag));
-	return IsSuccessful(result);
-}
-
-bool Library::SetWriteZBuffer3D(bool flag) {
-	int result = DxLib::SetWriteZBuffer3D(ToDxLibBool(flag));
-	return IsSuccessful(result);
-}
-
+// ウインドウモード関係
 Library::ChangeScreenResult Library::ChangeWindowMode(bool flag) {
 	int result = DxLib::ChangeWindowMode(ToDxLibBool(flag));
 	return ToChangeScreenResult(result);
 }
 
+// 入力関係
 bool Library::CheckHitKeyAll(Library::InputType inputType) {
 	int result = DxLib::CheckHitKeyAll(ToDxLibCheckInput(inputType));
 	return IsSuccessful(result);
@@ -91,11 +127,6 @@ bool Library::CheckHitKeyAll(Library::InputType inputType) {
 
 bool Library::CheckHitKey(Library::KeyCode keyCode) {
 	int result = DxLib::CheckHitKey(ToDxLibKeyCode(keyCode));
-	return IsSuccessful(result);
-}
-
-bool Library::SetOutApplicationLogValidFlag(bool flag) {
-	int result = DxLib::SetOutApplicationLogValidFlag(ToDxLibBool(flag));
 	return IsSuccessful(result);
 }
 
@@ -118,4 +149,10 @@ std::vector<Library::KeyCode> Library::GetHitKeyStateAll() {
 	}
 
 	return hitKeys;
+}
+
+// マイナー関数
+bool Library::SetOutApplicationLogValidFlag(bool flag) {
+	int result = DxLib::SetOutApplicationLogValidFlag(ToDxLibBool(flag));
+	return IsSuccessful(result);
 }

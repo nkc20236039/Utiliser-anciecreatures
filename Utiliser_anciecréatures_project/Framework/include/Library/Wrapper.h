@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <vector>
+#include <string>
 
 #include "InputMap.h"
 #include "MathWrapper.h"
@@ -47,17 +48,25 @@ bool Finalize();
 bool ProcessMessage();
 
 /* 3D関数 */
-//  3D図形描画関係関数
+// 3D図形描画関係関数
 bool SetUseZBuffer3D(bool);
 bool SetWriteZBuffer3D(bool);
 
+// モデルの読み込み・複製関係の関数
+int LoadModel(std::string);
+int DuplicateModel(int);
+bool DeleteModel(int);
+bool DrawModel(int);
+
+/* 一般関数 */
 // 文字描画関係関数
-bool DrawString(int, int, char*, Color, Color = Color(0.0f, 0.0f, 0.0f, 0.0f));
+bool DrawString(int, int, std::string, Color, Color = Color(0.0f, 0.0f, 0.0f, 0.0f));
 
 // 画面操作系関数
 bool ClearDrawScreen();
 bool ScreenFlip();
 bool SetDrawScreen(ScreenTarget);
+bool SetBackgroundColor(Color);
 
 // 時間関係の関数
 int GetNowCount();
