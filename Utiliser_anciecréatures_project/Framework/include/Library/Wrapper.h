@@ -56,7 +56,17 @@ bool SetWriteZBuffer3D(bool);
 int LoadModel(std::string);
 int DuplicateModel(int);
 bool DeleteModel(int);
+
+// モデル描画関数
 bool DrawModel(int);
+
+// モデル基本制御関数
+bool SetPosition(int, Library::float3);
+bool SetScale(int, Library::float3);
+bool SetRotation(int, Library::float3);
+bool SetVisible(int, bool);
+bool SetUseModelZBuffer(int, bool);
+bool SetWriteModelZBuffer(int, bool);
 
 /* 一般関数 */
 // 文字描画関係関数

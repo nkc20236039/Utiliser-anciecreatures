@@ -72,8 +72,35 @@ bool Library::DeleteModel(int modelHandle) {
 	return IsSuccessful(result);
 }
 
+// モデル描画関数
 bool Library::DrawModel(int modelHandle) {
 	int result = DxLib::MV1DrawModel(modelHandle);
+	return IsSuccessful(result);
+}
+
+// モデル基本制御関数
+bool Library::SetPosition(int handle, Library::float3 position) {
+	int result = DxLib::MV1SetPosition(handle, ToDxLibVector(position));
+	return IsSuccessful(result);
+}
+bool Library::SetScale(int handle, Library::float3 scale) {
+	int result = DxLib::MV1SetScale(handle, ToDxLibVector(scale));
+	return IsSuccessful(result);
+}
+bool Library::SetRotation(int handle, Library::float3 rotation) {
+	int result = DxLib::MV1SetRotationXYZ(handle, ToDxLibVector(rotation));
+	return IsSuccessful(result);
+}
+bool Library::SetVisible(int handle, bool isVisible) {
+	int result = DxLib::MV1SetVisible(handle, ToDxLibBool(isVisible));
+	return IsSuccessful(result);
+}
+bool Library::SetUseModelZBuffer(int handle, bool isUseZBuffer) {
+	int result = DxLib::MV1SetUseZBuffer(handle, ToDxLibBool(isUseZBuffer));
+	return IsSuccessful(result);
+}
+bool Library::SetWriteModelZBuffer(int handle, bool isWriteZBuffer) {
+	int result = DxLib::MV1SetUseZBuffer(handle, ToDxLibBool(isWriteZBuffer));
 	return IsSuccessful(result);
 }
 

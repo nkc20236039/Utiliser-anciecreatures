@@ -11,7 +11,15 @@ inline bool IsSuccessful(int result) {
 	return result == 0;
 }
 
-int ToDxLibDrawScreen(Library::ScreenTarget screenTarget) {
+inline DxLib::VECTOR ToDxLibVector(const Library::float3& vec) {
+	DxLib::VECTOR dxVec;
+	dxVec.x = vec.x;
+	dxVec.y = vec.y;
+	dxVec.z = vec.z;
+	return dxVec;
+}
+
+inline int ToDxLibDrawScreen(Library::ScreenTarget screenTarget) {
 	switch (screenTarget) {
 	case Library::ScreenTarget::Front:
 		return DX_SCREEN_FRONT;
@@ -26,7 +34,7 @@ int ToDxLibDrawScreen(Library::ScreenTarget screenTarget) {
 	}
 }
 
-Library::ChangeScreenResult ToChangeScreenResult(int result) {
+inline Library::ChangeScreenResult ToChangeScreenResult(int result) {
 	switch (result) {
 	case DX_CHANGESCREEN_OK:
 		return Library::ChangeScreenResult::Success;
@@ -41,7 +49,7 @@ Library::ChangeScreenResult ToChangeScreenResult(int result) {
 	}
 }
 
-int ToDxLibCheckInput(Library::InputType inputType) {
+inline int ToDxLibCheckInput(Library::InputType inputType) {
 	switch (inputType) {
 	case Library::InputType::Keyboard:
 		return DX_CHECKINPUT_KEY;
@@ -56,7 +64,7 @@ int ToDxLibCheckInput(Library::InputType inputType) {
 	}
 }
 
-int ToDxLibChangeScreen(Library::ChangeScreenResult result) {
+inline int ToDxLibChangeScreen(Library::ChangeScreenResult result) {
 	switch (result) {
 	case Library::ChangeScreenResult::Success:
 		return DX_CHANGESCREEN_OK;
@@ -71,232 +79,232 @@ int ToDxLibChangeScreen(Library::ChangeScreenResult result) {
 	}
 }
 
-int ToDxLibKeyCode(Library::KeyCode input) {
+inline int ToDxLibKeyCode(Library::KeyCode input) {
 	switch (input) {
-		case Library::KeyCode::Back:
-			return KEY_INPUT_BACK;
-		case Library::KeyCode::Tab:
-			return KEY_INPUT_TAB;
-		case Library::KeyCode::Return:
-			return KEY_INPUT_RETURN;
-		case Library::KeyCode::LShift:
-			return KEY_INPUT_LSHIFT;
-		case Library::KeyCode::RShift:
-			return KEY_INPUT_RSHIFT;
-		case Library::KeyCode::LControl:
-			return KEY_INPUT_LCONTROL;
-		case Library::KeyCode::RControl:
-			return KEY_INPUT_RCONTROL;
-		case Library::KeyCode::Escape:
-			return KEY_INPUT_ESCAPE;
-		case Library::KeyCode::Space:
-			return KEY_INPUT_SPACE;
-		case Library::KeyCode::PgUp:
-			return KEY_INPUT_PGUP;
-		case Library::KeyCode::PgDn:
-			return KEY_INPUT_PGDN;
-		case Library::KeyCode::End:
-			return KEY_INPUT_END;
-		case Library::KeyCode::Home:
-			return KEY_INPUT_HOME;
-		case Library::KeyCode::Left:
-			return KEY_INPUT_LEFT;
-		case Library::KeyCode::Up:
-			return KEY_INPUT_UP;
-		case Library::KeyCode::Right:
-			return KEY_INPUT_RIGHT;
-		case Library::KeyCode::Down:
-			return KEY_INPUT_DOWN;
-		case Library::KeyCode::Insert:
-			return KEY_INPUT_INSERT;
-		case Library::KeyCode::Delete:
-			return KEY_INPUT_DELETE;
-		case Library::KeyCode::Minus:
-			return KEY_INPUT_MINUS;
-		case Library::KeyCode::Yen:
-			return KEY_INPUT_YEN;
-		case Library::KeyCode::Prevtrack:
-			return KEY_INPUT_PREVTRACK;
-		case Library::KeyCode::Period:
-			return KEY_INPUT_PERIOD;
-		case Library::KeyCode::Slash:
-			return KEY_INPUT_SLASH;
-		case Library::KeyCode::LAlt:
-			return KEY_INPUT_LALT;
-		case Library::KeyCode::RAlt:
-			return KEY_INPUT_RALT;
-		case Library::KeyCode::Scroll:
-			return KEY_INPUT_SCROLL;
-		case Library::KeyCode::Semicolon:
-			return KEY_INPUT_SEMICOLON;
-		case Library::KeyCode::Colon:
-			return KEY_INPUT_COLON;
-		case Library::KeyCode::LBracket:
-			return KEY_INPUT_LBRACKET;
-		case Library::KeyCode::RBracket:
-			return KEY_INPUT_RBRACKET;
-		case Library::KeyCode::At:
-			return KEY_INPUT_AT;
-		case Library::KeyCode::BackSlash:
-			return KEY_INPUT_BACKSLASH;
-		case Library::KeyCode::Comma:
-			return KEY_INPUT_COMMA;
-		case Library::KeyCode::Kanji:
-			return KEY_INPUT_KANJI;
-		case Library::KeyCode::Convert:
-			return KEY_INPUT_CONVERT;
-		case Library::KeyCode::Noconvert:
-			return KEY_INPUT_NOCONVERT;
-		case Library::KeyCode::Kana:
-			return KEY_INPUT_KANA;
-		case Library::KeyCode::Apps:
-			return KEY_INPUT_APPS;
-		case Library::KeyCode::Capslock:
-			return KEY_INPUT_CAPSLOCK;
-		case Library::KeyCode::Sysrq:
-			return KEY_INPUT_SYSRQ;
-		case Library::KeyCode::Pause:
-			return KEY_INPUT_PAUSE;
-		case Library::KeyCode::LWin:
-			return KEY_INPUT_LWIN;
-		case Library::KeyCode::RWin:
-			return KEY_INPUT_RWIN;
-		case Library::KeyCode::Numlock:
-			return KEY_INPUT_NUMLOCK;
-		case Library::KeyCode::Numpad0:
-			return KEY_INPUT_NUMPAD0;
-		case Library::KeyCode::Numpad1:
-			return KEY_INPUT_NUMPAD1;
-		case Library::KeyCode::Numpad2:
-			return KEY_INPUT_NUMPAD2;
-		case Library::KeyCode::Numpad3:
-			return KEY_INPUT_NUMPAD3;
-		case Library::KeyCode::Numpad4:
-			return KEY_INPUT_NUMPAD4;
-		case Library::KeyCode::Numpad5:
-			return KEY_INPUT_NUMPAD5;
-		case Library::KeyCode::Numpad6:
-			return KEY_INPUT_NUMPAD6;
-		case Library::KeyCode::Numpad7:
-			return KEY_INPUT_NUMPAD7;
-		case Library::KeyCode::Numpad8:
-			return KEY_INPUT_NUMPAD8;
-		case Library::KeyCode::Numpad9:
-			return KEY_INPUT_NUMPAD9;
-		case Library::KeyCode::Multiply:
-			return KEY_INPUT_MULTIPLY;
-		case Library::KeyCode::Add:
-			return KEY_INPUT_ADD;
-		case Library::KeyCode::Subtract:
-			return KEY_INPUT_SUBTRACT;
-		case Library::KeyCode::Decimal:
-			return KEY_INPUT_DECIMAL;
-		case Library::KeyCode::Divide:
-			return KEY_INPUT_DIVIDE;
-		case Library::KeyCode::NumpadEnter:
-			return KEY_INPUT_NUMPADENTER;
-		case Library::KeyCode::F1:
-			return KEY_INPUT_F1;
-		case Library::KeyCode::F2:
-			return KEY_INPUT_F2;
-		case Library::KeyCode::F3:
-			return KEY_INPUT_F3;
-		case Library::KeyCode::F4:
-			return KEY_INPUT_F4;
-		case Library::KeyCode::F5:
-			return KEY_INPUT_F5;
-		case Library::KeyCode::F6:
-			return KEY_INPUT_F6;
-		case Library::KeyCode::F7:
-			return KEY_INPUT_F7;
-		case Library::KeyCode::F8:
-			return KEY_INPUT_F8;
-		case Library::KeyCode::F9:
-			return KEY_INPUT_F9;
-		case Library::KeyCode::F10:
-			return KEY_INPUT_F10;
-		case Library::KeyCode::F11:
-			return KEY_INPUT_F11;
-		case Library::KeyCode::F12:
-			return KEY_INPUT_F12;
-		case Library::KeyCode::A:
-			return KEY_INPUT_A;
-		case Library::KeyCode::B:
-			return KEY_INPUT_B;
-		case Library::KeyCode::C:
-			return KEY_INPUT_C;
-		case Library::KeyCode::D:
-			return KEY_INPUT_D;
-		case Library::KeyCode::E:
-			return KEY_INPUT_E;
-		case Library::KeyCode::F:
-			return KEY_INPUT_F;
-		case Library::KeyCode::G:
-			return KEY_INPUT_G;
-		case Library::KeyCode::H:
-			return KEY_INPUT_H;
-		case Library::KeyCode::I:
-			return KEY_INPUT_I;
-		case Library::KeyCode::J:
-			return KEY_INPUT_J;
-		case Library::KeyCode::K:
-			return KEY_INPUT_K;
-		case Library::KeyCode::L:
-			return KEY_INPUT_L;
-		case Library::KeyCode::M:
-			return KEY_INPUT_M;
-		case Library::KeyCode::N:
-			return KEY_INPUT_N;
-		case Library::KeyCode::O:
-			return KEY_INPUT_O;
-		case Library::KeyCode::P:
-			return KEY_INPUT_P;
-		case Library::KeyCode::Q:
-			return KEY_INPUT_Q;
-		case Library::KeyCode::R:
-			return KEY_INPUT_R;
-		case Library::KeyCode::S:
-			return KEY_INPUT_S;
-		case Library::KeyCode::T:
-			return KEY_INPUT_T;
-		case Library::KeyCode::U:
-			return KEY_INPUT_U;
-		case Library::KeyCode::V:
-			return KEY_INPUT_V;
-		case Library::KeyCode::W:
-			return KEY_INPUT_W;
-		case Library::KeyCode::X:
-			return KEY_INPUT_X;
-		case Library::KeyCode::Y:
-			return KEY_INPUT_Y;
-		case Library::KeyCode::Z:
-			return KEY_INPUT_Z;
-		case Library::KeyCode::Alpha0:
-			return KEY_INPUT_0;
-		case Library::KeyCode::Alpha1:
-			return KEY_INPUT_1;
-		case Library::KeyCode::Alpha2:
-			return KEY_INPUT_2;
-		case Library::KeyCode::Alpha3:
-			return KEY_INPUT_3;
-		case Library::KeyCode::Alpha4:
-			return KEY_INPUT_4;
-		case Library::KeyCode::Alpha5:
-			return KEY_INPUT_5;
-		case Library::KeyCode::Alpha6:
-			return KEY_INPUT_6;
-		case Library::KeyCode::Alpha7:
-			return KEY_INPUT_7;
-		case Library::KeyCode::Alpha8:
-			return KEY_INPUT_8;
-		case Library::KeyCode::Alpha9:
-			return KEY_INPUT_9;
+	case Library::KeyCode::Back:
+		return KEY_INPUT_BACK;
+	case Library::KeyCode::Tab:
+		return KEY_INPUT_TAB;
+	case Library::KeyCode::Return:
+		return KEY_INPUT_RETURN;
+	case Library::KeyCode::LShift:
+		return KEY_INPUT_LSHIFT;
+	case Library::KeyCode::RShift:
+		return KEY_INPUT_RSHIFT;
+	case Library::KeyCode::LControl:
+		return KEY_INPUT_LCONTROL;
+	case Library::KeyCode::RControl:
+		return KEY_INPUT_RCONTROL;
+	case Library::KeyCode::Escape:
+		return KEY_INPUT_ESCAPE;
+	case Library::KeyCode::Space:
+		return KEY_INPUT_SPACE;
+	case Library::KeyCode::PgUp:
+		return KEY_INPUT_PGUP;
+	case Library::KeyCode::PgDn:
+		return KEY_INPUT_PGDN;
+	case Library::KeyCode::End:
+		return KEY_INPUT_END;
+	case Library::KeyCode::Home:
+		return KEY_INPUT_HOME;
+	case Library::KeyCode::Left:
+		return KEY_INPUT_LEFT;
+	case Library::KeyCode::Up:
+		return KEY_INPUT_UP;
+	case Library::KeyCode::Right:
+		return KEY_INPUT_RIGHT;
+	case Library::KeyCode::Down:
+		return KEY_INPUT_DOWN;
+	case Library::KeyCode::Insert:
+		return KEY_INPUT_INSERT;
+	case Library::KeyCode::Delete:
+		return KEY_INPUT_DELETE;
+	case Library::KeyCode::Minus:
+		return KEY_INPUT_MINUS;
+	case Library::KeyCode::Yen:
+		return KEY_INPUT_YEN;
+	case Library::KeyCode::Prevtrack:
+		return KEY_INPUT_PREVTRACK;
+	case Library::KeyCode::Period:
+		return KEY_INPUT_PERIOD;
+	case Library::KeyCode::Slash:
+		return KEY_INPUT_SLASH;
+	case Library::KeyCode::LAlt:
+		return KEY_INPUT_LALT;
+	case Library::KeyCode::RAlt:
+		return KEY_INPUT_RALT;
+	case Library::KeyCode::Scroll:
+		return KEY_INPUT_SCROLL;
+	case Library::KeyCode::Semicolon:
+		return KEY_INPUT_SEMICOLON;
+	case Library::KeyCode::Colon:
+		return KEY_INPUT_COLON;
+	case Library::KeyCode::LBracket:
+		return KEY_INPUT_LBRACKET;
+	case Library::KeyCode::RBracket:
+		return KEY_INPUT_RBRACKET;
+	case Library::KeyCode::At:
+		return KEY_INPUT_AT;
+	case Library::KeyCode::BackSlash:
+		return KEY_INPUT_BACKSLASH;
+	case Library::KeyCode::Comma:
+		return KEY_INPUT_COMMA;
+	case Library::KeyCode::Kanji:
+		return KEY_INPUT_KANJI;
+	case Library::KeyCode::Convert:
+		return KEY_INPUT_CONVERT;
+	case Library::KeyCode::Noconvert:
+		return KEY_INPUT_NOCONVERT;
+	case Library::KeyCode::Kana:
+		return KEY_INPUT_KANA;
+	case Library::KeyCode::Apps:
+		return KEY_INPUT_APPS;
+	case Library::KeyCode::Capslock:
+		return KEY_INPUT_CAPSLOCK;
+	case Library::KeyCode::Sysrq:
+		return KEY_INPUT_SYSRQ;
+	case Library::KeyCode::Pause:
+		return KEY_INPUT_PAUSE;
+	case Library::KeyCode::LWin:
+		return KEY_INPUT_LWIN;
+	case Library::KeyCode::RWin:
+		return KEY_INPUT_RWIN;
+	case Library::KeyCode::Numlock:
+		return KEY_INPUT_NUMLOCK;
+	case Library::KeyCode::Numpad0:
+		return KEY_INPUT_NUMPAD0;
+	case Library::KeyCode::Numpad1:
+		return KEY_INPUT_NUMPAD1;
+	case Library::KeyCode::Numpad2:
+		return KEY_INPUT_NUMPAD2;
+	case Library::KeyCode::Numpad3:
+		return KEY_INPUT_NUMPAD3;
+	case Library::KeyCode::Numpad4:
+		return KEY_INPUT_NUMPAD4;
+	case Library::KeyCode::Numpad5:
+		return KEY_INPUT_NUMPAD5;
+	case Library::KeyCode::Numpad6:
+		return KEY_INPUT_NUMPAD6;
+	case Library::KeyCode::Numpad7:
+		return KEY_INPUT_NUMPAD7;
+	case Library::KeyCode::Numpad8:
+		return KEY_INPUT_NUMPAD8;
+	case Library::KeyCode::Numpad9:
+		return KEY_INPUT_NUMPAD9;
+	case Library::KeyCode::Multiply:
+		return KEY_INPUT_MULTIPLY;
+	case Library::KeyCode::Add:
+		return KEY_INPUT_ADD;
+	case Library::KeyCode::Subtract:
+		return KEY_INPUT_SUBTRACT;
+	case Library::KeyCode::Decimal:
+		return KEY_INPUT_DECIMAL;
+	case Library::KeyCode::Divide:
+		return KEY_INPUT_DIVIDE;
+	case Library::KeyCode::NumpadEnter:
+		return KEY_INPUT_NUMPADENTER;
+	case Library::KeyCode::F1:
+		return KEY_INPUT_F1;
+	case Library::KeyCode::F2:
+		return KEY_INPUT_F2;
+	case Library::KeyCode::F3:
+		return KEY_INPUT_F3;
+	case Library::KeyCode::F4:
+		return KEY_INPUT_F4;
+	case Library::KeyCode::F5:
+		return KEY_INPUT_F5;
+	case Library::KeyCode::F6:
+		return KEY_INPUT_F6;
+	case Library::KeyCode::F7:
+		return KEY_INPUT_F7;
+	case Library::KeyCode::F8:
+		return KEY_INPUT_F8;
+	case Library::KeyCode::F9:
+		return KEY_INPUT_F9;
+	case Library::KeyCode::F10:
+		return KEY_INPUT_F10;
+	case Library::KeyCode::F11:
+		return KEY_INPUT_F11;
+	case Library::KeyCode::F12:
+		return KEY_INPUT_F12;
+	case Library::KeyCode::A:
+		return KEY_INPUT_A;
+	case Library::KeyCode::B:
+		return KEY_INPUT_B;
+	case Library::KeyCode::C:
+		return KEY_INPUT_C;
+	case Library::KeyCode::D:
+		return KEY_INPUT_D;
+	case Library::KeyCode::E:
+		return KEY_INPUT_E;
+	case Library::KeyCode::F:
+		return KEY_INPUT_F;
+	case Library::KeyCode::G:
+		return KEY_INPUT_G;
+	case Library::KeyCode::H:
+		return KEY_INPUT_H;
+	case Library::KeyCode::I:
+		return KEY_INPUT_I;
+	case Library::KeyCode::J:
+		return KEY_INPUT_J;
+	case Library::KeyCode::K:
+		return KEY_INPUT_K;
+	case Library::KeyCode::L:
+		return KEY_INPUT_L;
+	case Library::KeyCode::M:
+		return KEY_INPUT_M;
+	case Library::KeyCode::N:
+		return KEY_INPUT_N;
+	case Library::KeyCode::O:
+		return KEY_INPUT_O;
+	case Library::KeyCode::P:
+		return KEY_INPUT_P;
+	case Library::KeyCode::Q:
+		return KEY_INPUT_Q;
+	case Library::KeyCode::R:
+		return KEY_INPUT_R;
+	case Library::KeyCode::S:
+		return KEY_INPUT_S;
+	case Library::KeyCode::T:
+		return KEY_INPUT_T;
+	case Library::KeyCode::U:
+		return KEY_INPUT_U;
+	case Library::KeyCode::V:
+		return KEY_INPUT_V;
+	case Library::KeyCode::W:
+		return KEY_INPUT_W;
+	case Library::KeyCode::X:
+		return KEY_INPUT_X;
+	case Library::KeyCode::Y:
+		return KEY_INPUT_Y;
+	case Library::KeyCode::Z:
+		return KEY_INPUT_Z;
+	case Library::KeyCode::Alpha0:
+		return KEY_INPUT_0;
+	case Library::KeyCode::Alpha1:
+		return KEY_INPUT_1;
+	case Library::KeyCode::Alpha2:
+		return KEY_INPUT_2;
+	case Library::KeyCode::Alpha3:
+		return KEY_INPUT_3;
+	case Library::KeyCode::Alpha4:
+		return KEY_INPUT_4;
+	case Library::KeyCode::Alpha5:
+		return KEY_INPUT_5;
+	case Library::KeyCode::Alpha6:
+		return KEY_INPUT_6;
+	case Library::KeyCode::Alpha7:
+		return KEY_INPUT_7;
+	case Library::KeyCode::Alpha8:
+		return KEY_INPUT_8;
+	case Library::KeyCode::Alpha9:
+		return KEY_INPUT_9;
 	default:
 		return 0;
 	}
 }
 
-Library::KeyCode ToLibraryKeyCode(int input) {
+inline Library::KeyCode ToLibraryKeyCode(int input) {
 	switch (input) {
 	case  KEY_INPUT_BACK:
 		return Library::KeyCode::Back;
@@ -521,7 +529,7 @@ Library::KeyCode ToLibraryKeyCode(int input) {
 	}
 }
 
-int ToDxLibMouseInput(Library::MouseButton input) {
+inline int ToDxLibMouseInput(Library::MouseButton input) {
 	switch (input) {
 	case Library::MouseButton::Left:
 		return MOUSE_INPUT_LEFT;
@@ -550,7 +558,7 @@ int ToDxLibMouseInput(Library::MouseButton input) {
 	}
 }
 
-int ToDxLibPadInput(Library::PadButton input) {
+inline int ToDxLibPadInput(Library::PadButton input) {
 	switch (input) {
 	case Library::PadButton::Down:
 		return PAD_INPUT_DOWN;

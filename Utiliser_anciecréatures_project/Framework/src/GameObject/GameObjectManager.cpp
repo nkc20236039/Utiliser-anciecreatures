@@ -31,6 +31,15 @@ void GameObjectManager::Draw() {
 		// エラーモデル(-1)であればスキップ
 		if (handle == -1) { continue; }
 
+		// 描画前の設定
+		Transform* transform = gameObject->GetTransform();
+		Library::SetPosition(handle, transform->Position);
+		Library::SetScale(handle, transform->Scale);
+		Library::SetRotation(handle, transform->Rotation);
+		Library::SetVisible(handle, gameObject->IsShowModel());
+		Library::SetUseModelZBuffer(handle, gameObject->GetZBuffer());
+		Library::SetWriteModelZBuffer(handle, gameObject->GetZBuffer());
+
 		// モデルを描画
 		Library::DrawModel(handle);
 	}
