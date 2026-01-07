@@ -1,5 +1,7 @@
 ﻿#include "GameObjectManager.h"
 
+#include "Library/Wrapper.h"
+
 // 新しいゲームオブジェクトを更新サイクルに追加する
 void GameObjectManager::ProcessSpawn() {
 	// 更新サイクルへ移動する
@@ -13,11 +15,24 @@ void GameObjectManager::ProcessSpawn() {
 }
 
 void GameObjectManager::Update(const Time& time) {
-	for (auto& gameObject : m_gameObjects) {
+	for (const auto& gameObject : m_gameObjects) {
 		// 非アクティブなオブジェクトはスキップ
 		if (!gameObject->IsActive()) { continue; }
-		// ゲームオブジェクトを更新
+
+		// ゲームオブジェクトの更新処理を実行
 		gameObject->Update(time);
+	}
+}
+
+void GameObjectManager::Draw() {
+	for (const auto& gameObject : m_gameObjects) {
+		// 描画するオブジェクトのモデルハンドルを取得
+		int handle = gameObject->GetModelHandle();
+		// エラーモデル(-1)であればスキップ
+		if (handle == -1) { continue; }
+
+		// モデルを描画
+		Library::DrawModel(handle);
 	}
 }
 
