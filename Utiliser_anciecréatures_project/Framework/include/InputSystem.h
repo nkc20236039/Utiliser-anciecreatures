@@ -4,7 +4,7 @@
 #include <unordered_set>
 
 #include "Library/Wrapper.h"
-#include "src/System/Singleton.h"
+#include "Singleton.h"
 
 class InputSystem : public Singleton<InputSystem> {
 	friend class Singleton<InputSystem>;

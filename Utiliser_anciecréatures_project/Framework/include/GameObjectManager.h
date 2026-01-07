@@ -3,7 +3,7 @@
 #include <memory>
 #include <vector>
 
-#include "src/GameObject/GameObject.h"
+#include "GameObject.h"
 #include "GameFrame.h"
 
 template <typename T>
@@ -23,6 +23,11 @@ public:
 	/// ゲームオブジェクトを更新する
 	/// </summary>
 	void Update(const Time& time);
+
+	/// <summary>
+	/// ゲームオブジェクトを描画する
+	/// </summary>
+	void Draw();
 
 	/// <summary>
 	/// 破棄予定のゲームオブジェクトを更新サイクルから削除する

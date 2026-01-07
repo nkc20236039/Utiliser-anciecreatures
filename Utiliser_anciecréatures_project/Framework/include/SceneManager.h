@@ -3,7 +3,7 @@
 #include <memory>
 #include <functional>
 
-#include "src/System/Singleton.h"
+#include "Singleton.h"
 #include "GameFrame.h"
 #include "SceneBase.h"
 

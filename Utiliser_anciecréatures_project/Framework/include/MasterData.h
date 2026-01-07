@@ -5,7 +5,7 @@
 #include <filesystem>
 
 #include "nlohmann/json.hpp"
-#include "src/System/Singleton.h"
+#include "Singleton.h"
 
 class MasterData : public Singleton<MasterData> {
 	friend class Singleton<MasterData>;

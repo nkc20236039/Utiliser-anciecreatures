@@ -5,6 +5,8 @@ void SceneBase::UpdateGameObjects(const Time& time) {
 	m_gameObjectManager.ProcessSpawn();
 	// ゲームオブジェクトを更新
 	m_gameObjectManager.Update(time);
+	// ゲームオブジェクトを描画
+	m_gameObjectManager.Draw();
 	// 破棄予定のゲームオブジェクトを更新サイクルから削除
 	m_gameObjectManager.ProcessDestroy();
 }
