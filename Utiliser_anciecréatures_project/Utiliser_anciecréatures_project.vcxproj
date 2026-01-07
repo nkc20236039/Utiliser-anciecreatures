@@ -155,7 +155,7 @@
     <ClCompile Include="Framework\src\InputManager\InputSystem.cpp" />
     <ClCompile Include="Framework\src\Library\MathWrapper.cpp" />
     <ClCompile Include="Framework\src\Frame\FrameManager.cpp" />
-    <ClCompile Include="Framework\src\GameObject\Manager\GameObjectManager.cpp" />
+    <ClCompile Include="Framework\src\GameObject\GameObjectManager.cpp" />
     <ClCompile Include="Framework\src\Library\Wrapper.cpp" />
     <ClCompile Include="Framework\src\MasterData\MasterData.cpp" />
     <ClCompile Include="GameSource\Scenes\GameScene.cpp" />
@@ -173,12 +173,12 @@
     <ClInclude Include="Framework\include\Library\Wrapper.h" />
     <ClInclude Include="Framework\src\Frame\FrameManager.h" />
     <ClInclude Include="Framework\include\GameFrame.h" />
-    <ClInclude Include="Framework\src\GameObject\DemoObject.h" />
-    <ClInclude Include="Framework\src\GameObject\GameObject.h" />
+    <ClInclude Include="Framework\include\GameObject.h" />
     <ClInclude Include="Framework\include\GameObjectManager.h" />
     <ClInclude Include="Framework\src\InputManager\InputManager.h" />
     <ClInclude Include="Framework\src\Library\Converter.h" />
-    <ClInclude Include="Framework\src\System\Delegate.h" />
+    <ClInclude Include="Framework\include\Delegate.h" />
+    <ClInclude Include="GameSource\GameScene\Player\PlayerMain.h" />
     <ClInclude Include="GameSource\Scenes.h" />
     <ClInclude Include="GameSource\Scenes\GameScene.h" />
     <ClInclude Include="GameSource\Scenes\TitleScene.h" />
@@ -187,7 +187,7 @@
     <ClInclude Include="Framework\include\SceneManager.h" />
     <ClInclude Include="Framework\FrameworkRoot.h" />
     <ClInclude Include="Framework\include\OutputLog.h" />
-    <ClInclude Include="Framework\src\System\Singleton.h" />
+    <ClInclude Include="Framework\include\Singleton.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

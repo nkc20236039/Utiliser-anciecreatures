@@ -18,7 +18,7 @@
     <ClCompile Include="Framework\src\Frame\FrameManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\src\GameObject\Manager\GameObjectManager.cpp">
+    <ClCompile Include="Framework\src\GameObject\GameObjectManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="GameSource\Scenes\GameScene.cpp">
@@ -65,10 +65,7 @@
     <ClInclude Include="Framework\include\GameFrame.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\src\GameObject\DemoObject.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\src\GameObject\GameObject.h">
+    <ClInclude Include="Framework\include\GameObject.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Framework\include\GameObjectManager.h">
@@ -95,7 +92,7 @@
     <ClInclude Include="Framework\include\OutputLog.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\src\System\Singleton.h">
+    <ClInclude Include="Framework\include\Singleton.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Framework\include\Library\Wrapper.h">
@@ -113,13 +110,16 @@
     <ClInclude Include="Framework\include\InputSystem.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\src\System\Delegate.h">
+    <ClInclude Include="Framework\include\Delegate.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Framework\include\Library\InputMap.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Framework\src\InputManager\InputManager.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSource\GameScene\Player\PlayerMain.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
