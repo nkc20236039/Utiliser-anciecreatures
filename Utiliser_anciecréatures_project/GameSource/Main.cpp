@@ -10,7 +10,6 @@ int WINAPI WinMain(
 	_In_opt_ HINSTANCE hPrevInstance,
 	_In_ LPSTR lpCmdLine,
 	_In_ int nShowCmd) {
-
 	SceneManager::Get().ChangeScene<TitleScene>();
 
 	// フレームワークの起動

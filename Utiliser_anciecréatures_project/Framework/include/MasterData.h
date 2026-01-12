@@ -19,15 +19,18 @@ public:
 	/// <summary>
 	/// マスターデータを取得する
 	/// </summary>
-	/// <param name="filePath">マスターデータのファイルパス(ロードされていないファイルの場合、読み込みが発生します)</param>
+	/// <param name="MasterPath">マスターデータのファイルパス(ロードされていないファイルの場合、読み込みが発生します)</param>
 	/// <returns>構造化されたデータを返す</returns>
-	nlohmann::json Load(std::string filePath);
+	nlohmann::json Load(std::string masterPath);
+
+	bool SetDefaultPath(std::string path);
 
 private:
 	MasterData() = default;
 	~MasterData() = default;
 
-	bool LoadMasterFile(std::string filePath);
-
+	std::string m_defaultPath;
 	std::unordered_map<std::string, nlohmann::json> m_masterDataMap;
+
+	bool LoadMasterFile(std::string filePath);
 };

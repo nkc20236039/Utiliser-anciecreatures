@@ -39,37 +39,46 @@ bool MasterData::Initialize(std::string path) {
 
 nlohmann::json MasterData::Load(std::string filePath) {
 	// 保存されているパスか調べる
-	fileSystem::path fullPath = fileSystem::path(filePath);
-	if (!m_masterDataMap.contains(fullPath.string())) {
+	fileSystem::path path = fileSystem::path(m_defaultPath) / fileSystem::path(filePath);
+	if (!m_masterDataMap.contains(path.string())) {
 		// 読み込まれていない場合は新たに読み込み
-		LoadMasterFile(filePath);
+		LoadMasterFile(path.string());
 	}
 
 	// 読み込んだうえで見つからなければ空のJsonを返す
-	if (!m_masterDataMap.contains(fullPath.string())) {
+	if (!m_masterDataMap.contains(path.string())) {
 		return nlohmann::json();
 	}
 
 	// 登録できている場合データを返す
-	return m_masterDataMap[fullPath.string()];
+	return m_masterDataMap[path.string()];
+}
+
+bool MasterData::SetDefaultPath(std::string path) {
+	// 正しいパスか確認
+	if (fileSystem::is_directory(path)) {
+		m_defaultPath = path;
+		return true;
+	}
+	return false;
 }
 
 bool MasterData::LoadMasterFile(std::string filePath) {
 	// ファイルを読み込む
-	fileSystem::path fullPath = fileSystem::path(filePath);
-	std::ifstream masterFile(fullPath);
-	auto test = fullPath.string();
+	fileSystem::path path = fileSystem::path(filePath);
+	std::ifstream masterFile(path);
+	auto test = path.string();
 	// 既に読み込まれている場合は即時終了
-	if (m_masterDataMap.contains(fullPath.string())) { return true; }
+	if (m_masterDataMap.contains(path.string())) { return true; }
 
 	// ファイルが開けなかった場合は例外を投げる
 	if (!masterFile.is_open()) {
-		OutputLog::Error(std::format("{}: ファイルを開けませんでした。", fullPath.string()));
+		OutputLog::Error(std::format("{}: ファイルを開けませんでした。", path.string()));
 		return false;
 	}
 	// 不正なJSON形式の場合は例外を投げる
 	if (!nlohmann::json::accept(masterFile)) {
-		OutputLog::Error(std::format("{}: 不正なJSONの形式です。", fullPath.string()));
+		OutputLog::Error(std::format("{}: 不正なJSONの形式です。", path.string()));
 		return false;
 	}
 
@@ -80,7 +89,7 @@ bool MasterData::LoadMasterFile(std::string filePath) {
 	nlohmann::json jsonData = nlohmann::json::parse(masterFile);
 
 	// マスターデータを保存
-	m_masterDataMap[fullPath.string()] = jsonData;
+	m_masterDataMap[path.string()] = jsonData;
 
 	return true;
 }

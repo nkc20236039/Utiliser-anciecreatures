@@ -6,6 +6,7 @@
 #include "SceneManager.h"
 
 using namespace UFramework;
+using json = nlohmann::json;
 
 // public:
 bool FrameworkRoot::Run() {
@@ -27,19 +28,47 @@ bool FrameworkRoot::Run() {
 
 // private:
 bool FrameworkRoot::Initialize() {
-	// 初期化前のアプリ設定
-#ifdef _DEBUG
-	Library::ChangeWindowMode(true);
-	Library::SetOutApplicationLogValidFlag(true);
-#else
-	Library::ChangeWindowMode(false);
-	Library::SetOutApplicationLogValidFlag(false);
-#endif
-
 	// マスターデータの読み込み
 	if (!MasterData::Get().Initialize("Assets/MasterData")) {
 		return false;
 	}
+	MasterData::Get().SetDefaultPath("Assets/MasterData");
+
+	/* アプリ設定 */
+	// データの取得
+	json appConfig = MasterData::Get().Load("AppConfig.json");
+
+	// ログ出力
+	Library::SetOutApplicationLogValidFlag(appConfig.at("LogOutput").get<bool>());
+
+	// 画面の設定
+	// フルスクリーン設定
+	Library::SetGraphMode(
+		appConfig.at("WindowWidth").get<int>(),
+		appConfig.at("WindowHeight").get<int>(),
+		appConfig.at("ColorBit").get<int>());
+	if (appConfig.at("FullScreen").get<bool>()) {
+		Library::SetFullScreenResolutionMode(Library::ResolutionMode::Native);
+	}
+	else {
+		Library::ChangeWindowMode(true);
+		Library::SetWindowSize(
+			appConfig.at("WindowWidth").get<int>(),
+			appConfig.at("WindowHeight").get<int>());
+		Library::SetWindowSizeExtendRate(1);
+	}
+
+	Library::SetMainWindowText(appConfig.at("AppName").get<std::string>());
+	// SetWindowIconID
+
+	// 描画先画面を裏画面にセット
+	Library::SetDrawScreen(Library::ScreenTarget::Back);
+	// SetUseZBuffer3D
+	// SetWriteZBuffer3D
+	// SetWaitVSyncFlag
+	// SetAlwaysRunFlag
+	// SetDoubleStartValidFlag
+
 
 	// 初期化
 	if (!Library::Init()) {
@@ -47,8 +76,6 @@ bool FrameworkRoot::Initialize() {
 		return false;
 	}
 
-	// 描画先画面を裏画面にセット
-	Library::SetDrawScreen(Library::ScreenTarget::Back);
 
 	// フレームマネージャーの生成
 	// 最初の画面表示までのフレーム時間を計測

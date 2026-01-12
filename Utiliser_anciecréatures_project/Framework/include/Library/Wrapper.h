@@ -22,6 +22,12 @@ enum class ChangeScreenResult {
 	RefreshNormal,
 };
 
+enum class ResolutionMode {
+	Native,
+	Desktop,
+	Maximum,
+};
+
 struct Color {
 public:
 	float r, g, b, a;
@@ -73,6 +79,8 @@ bool SetWriteModelZBuffer(int, bool);
 bool DrawString(int, int, std::string, Color, Color = Color(0.0f, 0.0f, 0.0f, 0.0f));
 
 // 画面操作系関数
+ChangeScreenResult SetGraphMode(int, int, int);
+bool SetFullScreenResolutionMode(ResolutionMode);
 bool ClearDrawScreen();
 bool ScreenFlip();
 bool SetDrawScreen(ScreenTarget);
@@ -83,6 +91,10 @@ int GetNowCount();
 
 // ウインドウモード関係
 ChangeScreenResult ChangeWindowMode(bool);
+bool SetMainWindowText(std::string);
+bool SetWindowIconId(int);
+bool SetWindowSize(int, int);
+bool SetWindowSizeExtendRate(double, double rateY = -1.0);
 
 // 入力関係
 bool CheckHitKeyAll(InputType);

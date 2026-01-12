@@ -112,6 +112,16 @@ bool Library::DrawString(int x, int y, std::string string, Color color, Color ed
 }
 
 // 画面操作系関数
+Library::ChangeScreenResult Library::SetGraphMode(int sizeX, int sizeY, int colorBit) {
+	int result = DxLib::SetGraphMode(sizeX, sizeY, colorBit);
+	return ToChangeScreenResult(result);
+}
+
+bool Library::SetFullScreenResolutionMode(ResolutionMode mode) {
+	int result = DxLib::SetFullScreenResolutionMode(ToDxLibResolutionMode(mode));
+	return IsSuccessful(result);
+}
+
 bool Library::ClearDrawScreen() {
 	int result = DxLib::ClearDrawScreen();
 	return IsSuccessful(result);
@@ -144,6 +154,26 @@ int Library::GetNowCount() {
 Library::ChangeScreenResult Library::ChangeWindowMode(bool flag) {
 	int result = DxLib::ChangeWindowMode(ToDxLibBool(flag));
 	return ToChangeScreenResult(result);
+}
+
+bool Library::SetMainWindowText(std::string title) {
+	int result = DxLib::SetMainWindowText(title.c_str());
+	return IsSuccessful(result);
+}
+
+bool Library::SetWindowIconId(int id) {
+	int result = DxLib::SetWindowIconID(id);
+	return IsSuccessful(result);
+}
+
+bool Library::SetWindowSize(int width, int height) {
+	int result = DxLib::SetWindowSize(width, height);
+	return IsSuccessful(result);
+}
+
+bool Library::SetWindowSizeExtendRate(double rateX, double rateY) {
+	int result = DxLib::SetWindowSizeExtendRate(rateX);
+	return IsSuccessful(result);
 }
 
 // 入力関係

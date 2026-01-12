@@ -64,18 +64,16 @@ inline int ToDxLibCheckInput(Library::InputType inputType) {
 	}
 }
 
-inline int ToDxLibChangeScreen(Library::ChangeScreenResult result) {
-	switch (result) {
-	case Library::ChangeScreenResult::Success:
-		return DX_CHANGESCREEN_OK;
-	case Library::ChangeScreenResult::Return:
-		return DX_CHANGESCREEN_RETURN;
-	case Library::ChangeScreenResult::Default:
-		return DX_CHANGESCREEN_DEFAULT;
-	case Library::ChangeScreenResult::RefreshNormal:
-		return DX_CHANGESCREEN_REFRESHNORMAL;
+inline int ToDxLibResolutionMode(Library::ResolutionMode mode) {
+	switch (mode) {
+	case Library::ResolutionMode::Native:
+		return DX_FSRESOLUTIONMODE_NATIVE;
+	case Library::ResolutionMode::Desktop:
+		return DX_FSRESOLUTIONMODE_DESKTOP;
+	case Library::ResolutionMode::Maximum:
+		return DX_FSRESOLUTIONMODE_MAXIMUM;
 	default:
-		return DX_CHANGESCREEN_DEFAULT;
+		return DX_FSRESOLUTIONMODE_NATIVE;
 	}
 }
 
