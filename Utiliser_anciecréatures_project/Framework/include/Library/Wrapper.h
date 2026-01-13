@@ -75,6 +75,9 @@ bool SetUseModelZBuffer(int, bool);
 bool SetWriteModelZBuffer(int, bool);
 
 /* 一般関数 */
+// グラフィックデータ制御
+int LoadGraph(std::string);
+
 // 文字描画関係関数
 bool DrawString(int, int, std::string, Color, Color = Color(0.0f, 0.0f, 0.0f, 0.0f));
 
@@ -103,4 +106,5 @@ std::vector<KeyCode> GetHitKeyStateAll();
 
 // マイナー関数
 bool SetOutApplicationLogValidFlag(bool);
+bool SetWaitVSyncFlag(bool);
 }

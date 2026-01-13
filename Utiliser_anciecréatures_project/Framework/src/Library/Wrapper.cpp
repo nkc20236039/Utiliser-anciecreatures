@@ -105,6 +105,11 @@ bool Library::SetWriteModelZBuffer(int handle, bool isWriteZBuffer) {
 }
 
 /* 一般関数 */
+// グラフィックデータ制御
+int Library::LoadGraph(std::string path) {
+	return DxLib::LoadGraph(path.c_str());
+}
+
 // 文字描画関係関数
 bool Library::DrawString(int x, int y, std::string string, Color color, Color edgeColor) {
 	int result = DxLib::DrawString(x, y, string.c_str(), color.GetColorCode(), edgeColor.GetColorCode());
@@ -211,5 +216,10 @@ std::vector<Library::KeyCode> Library::GetHitKeyStateAll() {
 // マイナー関数
 bool Library::SetOutApplicationLogValidFlag(bool flag) {
 	int result = DxLib::SetOutApplicationLogValidFlag(ToDxLibBool(flag));
+	return IsSuccessful(result);
+}
+
+bool Library::SetWaitVSyncFlag(bool flag) {
+	int result = DxLib::SetWaitVSyncFlag(ToDxLibBool(flag));
 	return IsSuccessful(result);
 }

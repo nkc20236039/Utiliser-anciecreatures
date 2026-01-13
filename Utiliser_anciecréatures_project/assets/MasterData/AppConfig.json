@@ -1,10 +1,12 @@
 ﻿{
   "AppName": "MyApplication",
   "Version": "1.0.0",
+  "IconPath": null,
   "LogOutput": true,
   "FullScreen": false,
   "WindowWidth": 1280,
   "WindowHeight": 720,
-  "ColorBit": 64,
+  "ColorBit": 32,
+  "VSync": false,
   "AntiAliasing": true
 }

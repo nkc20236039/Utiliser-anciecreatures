@@ -43,32 +43,31 @@ bool FrameworkRoot::Initialize() {
 
 	// 画面の設定
 	// フルスクリーン設定
-	Library::SetGraphMode(
-		appConfig.at("WindowWidth").get<int>(),
-		appConfig.at("WindowHeight").get<int>(),
-		appConfig.at("ColorBit").get<int>());
+	int width = appConfig.at("WindowWidth").get<int>();
+	int height = appConfig.at("WindowHeight").get<int>();
+	Library::SetGraphMode(width, height, appConfig.at("ColorBit").get<int>());
 	if (appConfig.at("FullScreen").get<bool>()) {
 		Library::SetFullScreenResolutionMode(Library::ResolutionMode::Native);
 	}
 	else {
 		Library::ChangeWindowMode(true);
-		Library::SetWindowSize(
-			appConfig.at("WindowWidth").get<int>(),
-			appConfig.at("WindowHeight").get<int>());
+		Library::SetWindowSize(width, height);
 		Library::SetWindowSizeExtendRate(1);
 	}
 
 	Library::SetMainWindowText(appConfig.at("AppName").get<std::string>());
-	// SetWindowIconID
+
+	// アイコンパスが指定されていればアイコンを設定
+	if (!appConfig.at("IconPath").is_null()) {
+		int iconId = Library::LoadGraph(appConfig.at("IconPath").get<std::string>());
+		Library::SetWindowIconId(iconId);
+	}
 
 	// 描画先画面を裏画面にセット
 	Library::SetDrawScreen(Library::ScreenTarget::Back);
-	// SetUseZBuffer3D
-	// SetWriteZBuffer3D
-	// SetWaitVSyncFlag
-	// SetAlwaysRunFlag
-	// SetDoubleStartValidFlag
-
+	Library::SetUseZBuffer3D(true);
+	Library::SetWriteZBuffer3D(true);
+	Library::SetWaitVSyncFlag(appConfig.at("VSync").get<bool>());
 
 	// 初期化
 	if (!Library::Init()) {
