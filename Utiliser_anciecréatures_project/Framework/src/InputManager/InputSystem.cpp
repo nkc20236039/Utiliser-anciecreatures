@@ -1,5 +1,5 @@
 ﻿#include "InputSystem.h"
-
+#include "OutputLog.h"
 bool InputSystem::IsKeyDown(Library::KeyCode key) {
 	return m_pressedKeys.contains(key);
 }
@@ -12,13 +12,15 @@ bool InputSystem::IsKeyUp(Library::KeyCode key) {
 	return m_canceledKeys.contains(key);
 }
 
-int InputSystem::GetAxis(Library::KeyCode positive, Library::KeyCode negative) {
-	int axis = 0;
+float InputSystem::GetAxis(Library::KeyCode positive, Library::KeyCode negative) {
+	float axis = 0.0f;
+	// プラス方向の入力
 	if (IsKeyPressing(positive)) {
-		axis += 1;
+		axis = 1.0f;
 	}
+	// マイナス方向の入力
 	if (IsKeyPressing(negative)) {
-		axis -= 1;
+		axis = -1.0f;
 	}
 	return axis;
 }

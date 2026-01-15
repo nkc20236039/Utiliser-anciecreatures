@@ -151,6 +151,8 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Framework\src\GameObject\Camera.cpp" />
+    <ClCompile Include="Framework\src\GameObject\GameObject.cpp" />
     <ClCompile Include="Framework\src\InputManager\InputManager.cpp" />
     <ClCompile Include="Framework\src\InputManager\InputSystem.cpp" />
     <ClCompile Include="Framework\src\Library\MathWrapper.cpp" />
@@ -158,6 +160,7 @@
     <ClCompile Include="Framework\src\GameObject\GameObjectManager.cpp" />
     <ClCompile Include="Framework\src\Library\Wrapper.cpp" />
     <ClCompile Include="Framework\src\MasterData\MasterData.cpp" />
+    <ClCompile Include="GameSource\Global\Camera\FreeCamera.cpp" />
     <ClCompile Include="GameSource\Scenes\GameScene.cpp" />
     <ClCompile Include="GameSource\Scenes\TitleScene.cpp" />
     <ClCompile Include="GameSource\Main.cpp" />
@@ -167,6 +170,7 @@
     <ClCompile Include="Framework\src\System\OutputLog.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Framework\include\Camera.h" />
     <ClInclude Include="Framework\include\InputSystem.h" />
     <ClInclude Include="Framework\include\Library\InputMap.h" />
     <ClInclude Include="Framework\include\Library\MathWrapper.h" />
@@ -179,6 +183,7 @@
     <ClInclude Include="Framework\src\Library\Converter.h" />
     <ClInclude Include="Framework\include\Delegate.h" />
     <ClInclude Include="GameSource\GameScene\Player\PlayerMain.h" />
+    <ClInclude Include="GameSource\Global\Camera\FreeCamera.h" />
     <ClInclude Include="GameSource\Scenes.h" />
     <ClInclude Include="GameSource\Scenes\GameScene.h" />
     <ClInclude Include="GameSource\Scenes\TitleScene.h" />

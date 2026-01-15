@@ -58,6 +58,37 @@ bool Library::SetWriteZBuffer3D(bool flag) {
 	return IsSuccessful(result);
 }
 
+// カメラ
+bool Library::SetCameraNearFar(float nearClip, float farClip) {
+	int result = DxLib::SetCameraNearFar(nearClip, farClip);
+	return IsSuccessful(result);
+}
+bool Library::SetCameraPositionAndTarget(Library::float3 position, Library::float3 target) {
+	int result = DxLib::SetCameraPositionAndTarget_UpVecY(
+		ToDxLibVector(position),
+		ToDxLibVector(target));
+	return IsSuccessful(result);
+}
+bool Library::SetCameraPositionAndTarget(Library::float3 position, Library::float3 target, Library::float3 up) {
+	int result = DxLib::SetCameraPositionAndTargetAndUpVec(
+		ToDxLibVector(position),
+		ToDxLibVector(target),
+		ToDxLibVector(up));
+	return IsSuccessful(result);
+}
+bool Library::SetCameraPositionAndAngle(Library::float3 position, Library::float3 angle) {
+	int result = DxLib::SetCameraPositionAndAngle(
+		ToDxLibVector(position),
+		angle.x,
+		angle.y,
+		angle.z);
+	return IsSuccessful(result);
+}
+bool Library::SetupCameraPerspective(float fov) {
+	int ressult = DxLib::SetupCamera_Perspective(fov);
+	return IsSuccessful(ressult);
+}
+
 // モデルの読み込み・複製関係の関数
 int Library::LoadModel(std::string fileName) {
 	return DxLib::MV1LoadModel(fileName.c_str());
@@ -196,7 +227,6 @@ constexpr int KEY_BUFFER_SIZE = 256;
 std::vector<Library::KeyCode> Library::GetHitKeyStateAll() {
 	// 出力用の押されているキーを格納するベクター
 	std::vector<Library::KeyCode> hitKeys;
-	hitKeys.reserve(KEY_BUFFER_SIZE);
 	// DXライブラリー用のキーを格納する配列
 	char keyBuffer[KEY_BUFFER_SIZE];
 

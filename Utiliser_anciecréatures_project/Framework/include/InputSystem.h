@@ -28,8 +28,7 @@ public:
 	/// </summary>
 	/// <param name="positive">プラス方向の入力キー</param>
 	/// <param name="negative">マイナス方向の入力キー</param>
-	/// <returns></returns>
-	int GetAxis(Library::KeyCode positive, Library::KeyCode negative);
+	float GetAxis(Library::KeyCode positive, Library::KeyCode negative);
 private:
 	InputSystem() = default;
 	~InputSystem() = default;

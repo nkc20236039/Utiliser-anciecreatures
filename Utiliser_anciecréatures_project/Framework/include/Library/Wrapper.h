@@ -46,6 +46,15 @@ public:
 	Color(float r, float g, float b);
 
 	unsigned int GetColorCode();
+
+	static const Color White() { return Color(1.0f, 1.0f, 1.0f, 1.0f); }
+	static const Color Black() { return Color(0.0f, 0.0f, 0.0f, 1.0f); }
+	static const Color Red() { return Color(1.0f, 0.0f, 0.0f, 1.0f); }
+	static const Color Green() { return Color(0.0f, 1.0f, 0.0f, 1.0f); }
+	static const Color Blue() { return Color(0.0f, 0.0f, 1.0f, 1.0f); }
+	static const Color Cyan() { return Color(0.0f, 1.0f, 1.0f, 1.0f); }
+	static const Color Magenta() { return Color(1.0f, 0.0f, 1.0f, 1.0f); }
+	static const Color Yellow() { return Color(1.0f, 1.0f, 0.0f, 1.0f); }
 };
 
 // 使用必須関数
@@ -58,6 +67,13 @@ bool ProcessMessage();
 bool SetUseZBuffer3D(bool);
 bool SetWriteZBuffer3D(bool);
 
+// カメラ
+bool SetCameraNearFar(float, float);
+bool SetCameraPositionAndTarget(float3, float3);
+bool SetCameraPositionAndTarget(float3, float3, float3);
+bool SetCameraPositionAndAngle(float3, float3);
+bool SetupCameraPerspective(float);
+
 // モデルの読み込み・複製関係の関数
 int LoadModel(std::string);
 int DuplicateModel(int);
@@ -67,9 +83,9 @@ bool DeleteModel(int);
 bool DrawModel(int);
 
 // モデル基本制御関数
-bool SetPosition(int, Library::float3);
-bool SetScale(int, Library::float3);
-bool SetRotation(int, Library::float3);
+bool SetPosition(int, float3);
+bool SetScale(int, float3);
+bool SetRotation(int, float3);
 bool SetVisible(int, bool);
 bool SetUseModelZBuffer(int, bool);
 bool SetWriteModelZBuffer(int, bool);
@@ -103,6 +119,8 @@ bool SetWindowSizeExtendRate(double, double rateY = -1.0);
 bool CheckHitKeyAll(InputType);
 bool CheckHitKey(KeyCode);
 std::vector<KeyCode> GetHitKeyStateAll();
+bool SetMouseDispFlag(int);
+Library::float2 GetMousePoint();
 
 // マイナー関数
 bool SetOutApplicationLogValidFlag(bool);

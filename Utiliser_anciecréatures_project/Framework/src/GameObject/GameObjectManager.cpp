@@ -26,20 +26,13 @@ void GameObjectManager::Update(const Time& time) {
 
 void GameObjectManager::Draw() {
 	for (const auto& gameObject : m_gameObjects) {
-		// 描画するオブジェクトのモデルハンドルを取得
+		// ゲームオブジェクトの状態を更新する
+		gameObject->UpdateGameObjectState();
+
+		// モデルハンドルを取得
 		int handle = gameObject->GetModelHandle();
-		// エラーモデル(-1)であればスキップ
+		// モデルハンドルが無効であれば描画をスキップ
 		if (handle == -1) { continue; }
-
-		// 描画前の設定
-		Transform* transform = gameObject->GetTransform();
-		Library::SetPosition(handle, transform->Position);
-		Library::SetScale(handle, transform->Scale);
-		Library::SetRotation(handle, transform->Rotation);
-		Library::SetVisible(handle, gameObject->IsShowModel());
-		Library::SetUseModelZBuffer(handle, gameObject->GetZBuffer());
-		Library::SetWriteModelZBuffer(handle, gameObject->GetZBuffer());
-
 		// モデルを描画
 		Library::DrawModel(handle);
 	}

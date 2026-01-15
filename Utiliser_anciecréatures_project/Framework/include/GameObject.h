@@ -63,11 +63,6 @@ public:
 	/// アクティブ状態の取得
 	/// </summary>
 	bool IsActive() const { return m_isActive; }
-	/// <summary>
-	/// モデルを描画するかの取得
-	/// </summary>
-	/// <param name="showModel"></param>
-	bool IsShowModel() const { return m_showModel; }
 
 	/// <summary>
 	/// アクティブ状態の設定
@@ -80,7 +75,11 @@ public:
 	Transform* GetTransform() { return m_transform.get(); }
 
 	int GetModelHandle() const { return m_modelHandle; }
-	bool GetZBuffer() const { return m_zBuffer; }
+
+	/// <summary>
+	/// ゲームオブジェクトの状態を更新する
+	/// </summary>
+	virtual void UpdateGameObjectState();
 
 protected:
 	bool						m_isActive = true;
