@@ -11,6 +11,12 @@ public:
 	static float3 Zero() { return float3(0.0f, 0.0f, 0.0f); }
 	// 全ての要素が1のfloat3を返す
 	static float3 One() { return float3(1.0f, 1.0f, 1.0f); }
+	// 上方向の単位ベクトルを返す
+	static float3 Up() { return float3(0.0f, 1.0, 0.0f); }
+	// 前方向の単位ベクトルを返す
+	static float3 Forward() { return float3(0.0f, 0.0, 1.0f); }
+	// 右方向の単位ベクトルを返す
+	static float3 Right() { return float3(1.0f, 0.0, 0.0f); }
 
 	/// <summary>
 	/// 初期値(0)で初期化する
@@ -189,3 +195,10 @@ public:
 	}
 };
 }
+
+class UMath {
+public:
+	constexpr static float PI = 3.14159265358979323846f;
+	constexpr static float Deg2Rad = PI / 180.0f;
+	constexpr static float Rad2Deg = 180.0f / PI;
+};
