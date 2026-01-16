@@ -13,9 +13,9 @@ void GameScene::Enter() {
 
 	std::shared_ptr<Transform> playerTransform = std::make_shared<Transform>(
 		Library::float3(0.0f, 0.0f, 0.0f),		// position
-		Library::float3(100.0f, 100.0f, 100.0f),	// scale
+		Library::float3(1.0f, 1.0f, 1.0f),	// scale
 		Library::float3(0.0f, 0.0f, 0.0f));			// rotation
-	m_gameObjectManager.Spawn<PlayerMain>(playerTransform, "Assets/Model/Player/PlayerModel.mv1");
+	m_gameObjectManager.Spawn<PlayerMain>(playerTransform, "Assets/SimpleModel.mqo");
 }
 
 // ゲームシーンから出るときの終了処理

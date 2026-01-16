@@ -170,6 +170,7 @@
     <ClCompile Include="Framework\src\System\OutputLog.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Framework\include\AppricationManager.h" />
     <ClInclude Include="Framework\include\Camera.h" />
     <ClInclude Include="Framework\include\InputSystem.h" />
     <ClInclude Include="Framework\include\Library\InputMap.h" />

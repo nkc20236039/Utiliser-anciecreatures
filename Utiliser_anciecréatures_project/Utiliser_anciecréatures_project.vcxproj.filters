@@ -137,5 +137,8 @@
     <ClInclude Include="GameSource\Global\Camera\FreeCamera.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
+    <ClInclude Include="Framework\include\AppricationManager.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
