@@ -535,12 +535,6 @@ inline int ToDxLibMouseInput(Library::MouseButton input) {
 		return MOUSE_INPUT_RIGHT;
 	case Library::MouseButton::Middle:
 		return MOUSE_INPUT_MIDDLE;
-	case Library::MouseButton::Button1:
-		return MOUSE_INPUT_1;
-	case Library::MouseButton::Button2:
-		return MOUSE_INPUT_2;
-	case Library::MouseButton::Button3:
-		return MOUSE_INPUT_3;
 	case Library::MouseButton::Button4:
 		return MOUSE_INPUT_4;
 	case Library::MouseButton::Button5:
@@ -553,6 +547,29 @@ inline int ToDxLibMouseInput(Library::MouseButton input) {
 		return MOUSE_INPUT_8;
 	default:
 		return 0;
+	}
+}
+
+inline Library::MouseButton ToLibraryMouseInput(int input) {
+	switch (input) {
+	case  MOUSE_INPUT_LEFT:
+		return Library::MouseButton::Left;
+	case MOUSE_INPUT_RIGHT:
+		return Library::MouseButton::Right;
+	case MOUSE_INPUT_MIDDLE:
+		return Library::MouseButton::Middle;
+	case MOUSE_INPUT_4:
+		return Library::MouseButton::Button4;
+	case MOUSE_INPUT_5:
+		return Library::MouseButton::Button5;
+	case MOUSE_INPUT_6:
+		return Library::MouseButton::Button6;
+	case MOUSE_INPUT_7:
+		return Library::MouseButton::Button7;
+	case MOUSE_INPUT_8:
+		return Library::MouseButton::Button8;
+	default:
+		return Library::MouseButton::None;
 	}
 }
 

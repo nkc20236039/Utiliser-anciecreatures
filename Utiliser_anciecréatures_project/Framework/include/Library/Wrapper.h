@@ -119,8 +119,10 @@ bool SetWindowSizeExtendRate(double, double rateY = -1.0);
 bool CheckHitKeyAll(InputType);
 bool CheckHitKey(KeyCode);
 std::vector<KeyCode> GetHitKeyStateAll();
-bool SetMouseDispFlag(int);
+bool SetUseDirectInputFlag(bool);
+bool SetMouseDispFlag(bool);
 Library::float2 GetMousePoint();
+std::vector<MouseButton> GetMouseInputAll();
 
 // マイナー関数
 bool SetOutApplicationLogValidFlag(bool);

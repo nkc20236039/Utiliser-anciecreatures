@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include <vector>
+#include <memory>
 #include <unordered_set>
 
 #include "Library/Wrapper.h"
@@ -11,8 +12,9 @@ class InputSystem : public Singleton<InputSystem> {
 	friend class InputManager;
 
 public:
+	/* キー入力 */
 	/// <summary>
-	/// 対象のキーが押した瞬間であるか判定する
+	/// 対象のキーを押した瞬間であるか判定する
 	/// </summary>
 	bool IsKeyDown(Library::KeyCode key);
 	/// <summary>
@@ -20,7 +22,7 @@ public:
 	/// </summary>
 	bool IsKeyPressing(Library::KeyCode key);
 	/// <summary>
-	/// 対象のキーが離された瞬間であるか判定する
+	/// 対象のキーを離した瞬間であるか判定する
 	/// </summary>
 	bool IsKeyUp(Library::KeyCode key);
 	/// <summary>
@@ -29,16 +31,97 @@ public:
 	/// <param name="positive">プラス方向の入力キー</param>
 	/// <param name="negative">マイナス方向の入力キー</param>
 	float GetAxis(Library::KeyCode positive, Library::KeyCode negative);
+
+	/* マウス入力 */
+	/// <summary>
+	/// 対象のマウスボタンを押した瞬間であるか判定する
+	/// </summary>
+	bool IsMouseButtonDown(Library::MouseButton button);
+	/// <summary>
+	/// 対象のマウスボタンを押している状態であるか判定する
+	/// </summary>
+	bool IsMouseButtonPressing(Library::MouseButton button);
+	/// <summary>
+	/// 対象のマウスボタンを離した瞬間であるか判定する
+	/// </summary>
+	bool IsMouseButtonUp(Library::MouseButton button);
+
 private:
-	InputSystem() = default;
+	enum class InputState {
+		Down,
+		Pressing,
+		Up,
+	};
+
+	class InputData {
+	public:
+		~InputData() = default;
+
+		/// <summary>
+		/// キーコードをもとにInputDataを生成する
+		/// </summary>
+		static InputData GetData(Library::KeyCode code) {
+			return InputData(InputDevice::Keyboard, static_cast<int>(code));
+		}
+
+		/// <summary>
+		/// マウスコードをもとにInputDataを生成する
+		/// </summary>
+		/// <param name="code"></param>
+		/// <returns></returns>
+		static InputData GetData(Library::MouseButton code) {
+			return InputData(InputDevice::Mouse, static_cast<int>(code));
+		}
+
+		/// <summary>
+		/// 入力状態を取得する
+		/// </summary>
+		bool IsStateMatch(const InputData& data, InputState state) const {
+			// IDとデバイスが異なる場合はfalseを返す
+			if ((m_id != data.m_id) || (m_device != data.m_device)) { return false; }
+
+			return m_state == state;
+		}
+
+		bool operator==(const InputData& other) const {
+			return (m_id == other.m_id) && (m_device == other.m_device);
+		}
+
+		// getter
+		InputState GetState() const { return m_state; }
+		// setter
+		void SetState(InputState state) { m_state = state; }
+
+	private:
+		// 入力デバイスの種類
+		enum class InputDevice {
+			Keyboard,
+			Mouse,
+		};
+
+		InputData(InputDevice device, int id, InputState state = InputState::Down)
+			: m_device(device)
+			, m_id(id)
+			, m_state(state) {}
+
+		int m_id;
+		InputDevice m_device;
+		InputState m_state;
+	};
+
+	InputSystem();
 	~InputSystem() = default;
 
-	std::unordered_set<Library::KeyCode> m_pressedKeys;
-	std::unordered_set<Library::KeyCode> m_pressingKeys;
-	std::unordered_set<Library::KeyCode> m_canceledKeys;
+	std::vector<InputData> m_newInputTempData;
+	std::vector<InputData> m_pressingButtonData;
 
 	/// <summary>
 	/// 入力状態の更新を行う
 	/// </summary>
 	void Update();	// InputManagerから呼び出される
+
+	/// <summary>
+	/// 入力の状態が一致するか判定する
+	/// </summary>
+	bool IsButtonStateMatch(InputData id, InputState state);
 };

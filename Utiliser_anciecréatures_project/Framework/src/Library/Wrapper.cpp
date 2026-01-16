@@ -243,6 +243,44 @@ std::vector<Library::KeyCode> Library::GetHitKeyStateAll() {
 	return hitKeys;
 }
 
+bool Library::SetUseDirectInputFlag(bool flag) {
+	int result = DxLib::SetUseDirectInputFlag(ToDxLibBool(flag));
+	return IsSuccessful(result);
+}
+
+bool Library::SetMouseDispFlag(bool flag) {
+	int result = DxLib::SetMouseDispFlag(ToDxLibBool(flag));
+	return IsSuccessful(result);
+}
+
+Library::float2 Library::GetMousePoint() {
+	int x, y;
+	int result = DxLib::GetMousePoint(&x, &y);
+
+	// ライブラリの戻り値が正常なら座標を返す
+	if (IsSuccessful(result)) {
+		return Library::float2(static_cast<float>(x), static_cast<float>(y));
+	}
+	else {
+		// 異常終了ならゼロベクトルを返す
+		return Library::float2::Zero();
+	}
+}
+
+std::vector<Library::MouseButton> Library::GetMouseInputAll() {
+	int mouseState = DxLib::GetMouseInput();
+	std::vector<Library::MouseButton> hitMouseButtons;
+
+	// 各ビットをチェックして押されているボタンを格納
+	for (int i = 0; i < static_cast<int>(Library::MouseButton::None); i++) {
+		if ((mouseState & (1 << i)) != 0) {
+			hitMouseButtons.push_back(static_cast<Library::MouseButton>(i));
+		}
+	}
+
+	return hitMouseButtons;
+}
+
 // マイナー関数
 bool Library::SetOutApplicationLogValidFlag(bool flag) {
 	int result = DxLib::SetOutApplicationLogValidFlag(ToDxLibBool(flag));
