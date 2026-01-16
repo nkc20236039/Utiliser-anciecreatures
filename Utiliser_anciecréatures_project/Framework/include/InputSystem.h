@@ -45,7 +45,18 @@ public:
 	/// 対象のマウスボタンを離した瞬間であるか判定する
 	/// </summary>
 	bool IsMouseButtonUp(Library::MouseButton button);
-
+	/// <summary>
+	/// マウスの現在座標を取得する
+	/// </summary>
+	/// <returns></returns>
+	Library::float2 GetMousePosition() {
+		return Library::GetMousePoint();
+	}
+	/// <summary>
+	/// マウスの移動量を取得する
+	/// </summary>
+	/// <returns></returns>
+	Library::float2 GetMouseDelta();
 private:
 	enum class InputState {
 		Down,
@@ -104,16 +115,17 @@ private:
 			, m_id(id)
 			, m_state(state) {}
 
-		int m_id;
+		int			m_id;
 		InputDevice m_device;
-		InputState m_state;
+		InputState  m_state;
 	};
 
 	InputSystem();
 	~InputSystem() = default;
 
-	std::vector<InputData> m_newInputTempData;
-	std::vector<InputData> m_pressingButtonData;
+	Library::float2			m_lastMousePos = Library::float2::Zero();	// 前回のフレームのマウス座標
+	std::vector<InputData>	m_newInputTempData;		// 新しい入力を一時的に保存するvector
+	std::vector<InputData>	m_pressingButtonData;	// 押されているボタンの状態を保存するvector
 
 	/// <summary>
 	/// 入力状態の更新を行う

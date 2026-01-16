@@ -12,7 +12,7 @@ void GameScene::Enter() {
 	m_gameObjectManager.Spawn<FreeCamera>();
 
 	std::shared_ptr<Transform> playerTransform = std::make_shared<Transform>(
-		Library::float3(320.0f, 100.0f, 0.0f),		// position
+		Library::float3(0.0f, 0.0f, 0.0f),		// position
 		Library::float3(100.0f, 100.0f, 100.0f),	// scale
 		Library::float3(0.0f, 0.0f, 0.0f));			// rotation
 	m_gameObjectManager.Spawn<PlayerMain>(playerTransform, "Assets/Model/Player/PlayerModel.mv1");

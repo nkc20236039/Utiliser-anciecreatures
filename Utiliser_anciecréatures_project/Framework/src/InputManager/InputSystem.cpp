@@ -108,3 +108,10 @@ bool InputSystem::IsButtonStateMatch(InputData id, InputState state) {
 	}
 	return false;
 }
+
+Library::float2 InputSystem::GetMouseDelta() {
+	Library::float2 currentMousePos = Library::GetMousePoint();
+	Library::float2 delta = currentMousePos - m_lastMousePos;
+	m_lastMousePos = currentMousePos;
+	return delta;
+}

@@ -7,7 +7,8 @@ void FreeCamera::Start() {}
 void FreeCamera::Update(const Time& time) {
 	auto& input = InputSystem::Get();
 	const float moveSpeed = 500.0f;      // 移動速度
-	const float rotateSpeed = 0.1f;      // 回転速度
+	const float rotateSpeed = 0.01f;      // 回転速度
+
 	// キーボード入力による移動
 	Library::float3 moveDirection = Library::float3::Zero();
 
@@ -21,8 +22,9 @@ void FreeCamera::Update(const Time& time) {
 		m_transform->Position += moveDirection;
 	}
 
-	//// マウス入力による回転
-	//Library::float2 mouseDelta = Library::GetMouseDelta();
-	//m_transform->Rotation.y += mouseDelta.x * rotateSpeed;
-	//m_transform->Rotation.x += mouseDelta.y * rotateSpeed;
+	// マウス入力による回転
+	Library::float2 mouseDelta = input.GetMouseDelta();
+	m_transform->Rotation.y += mouseDelta.x * rotateSpeed;
+	m_transform->Rotation.x += mouseDelta.y * rotateSpeed;
+	m_transform->Rotation.z = 0.0f;
 }
