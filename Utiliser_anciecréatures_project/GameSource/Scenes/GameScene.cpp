@@ -15,7 +15,7 @@ void GameScene::Enter() {
 		Library::float3(0.0f, 0.0f, 0.0f),		// position
 		Library::float3(1.0f, 1.0f, 1.0f),	// scale
 		Library::float3(0.0f, 0.0f, 0.0f));			// rotation
-	m_gameObjectManager.Spawn<PlayerMain>(playerTransform, "Assets/SimpleModel.mqo");
+	m_gameObjectManager.Spawn<PlayerMain>(playerTransform, "Assets/Model/Player/PlayerModel.mv1");
 }
 
 // ゲームシーンから出るときの終了処理
