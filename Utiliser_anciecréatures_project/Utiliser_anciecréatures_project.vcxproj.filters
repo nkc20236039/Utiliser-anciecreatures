@@ -45,9 +45,6 @@
     <ClCompile Include="Framework\src\Library\Wrapper.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\src\Library\MathWrapper.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Framework\src\MasterData\MasterData.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -64,6 +61,12 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="GameSource\Global\Camera\FreeCamera.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\src\UMath\Structs.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\src\System\ApplicationManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -110,9 +113,6 @@
     <ClInclude Include="Framework\src\Library\Converter.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\include\Library\MathWrapper.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="GameSource\Scenes.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -137,7 +137,13 @@
     <ClInclude Include="GameSource\Global\Camera\FreeCamera.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\include\AppricationManager.h">
+    <ClInclude Include="Framework\include\ApplicationManager.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\include\UMath\Structs.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\include\Mathex.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>

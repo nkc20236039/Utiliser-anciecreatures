@@ -12,7 +12,17 @@ concept IsGameObject = std::is_base_of_v<GameObject, T>;
 class GameObjectManager {
 public:
 	GameObjectManager() = default;
-	~GameObjectManager() = default;
+	~GameObjectManager() {
+		// 生成予定だったゲームオブジェクトを解放
+		for (auto spawned : m_spawnedRequests)
+		{
+			// 管理される前のメモリのため解放
+			delete(spawned);
+		}
+		m_spawnedRequests.clear();
+
+		m_gameObjects.clear();
+	}
 
 	/// <summary>
 	/// 新しいゲームオブジェクトを更新サイクルに追加する
@@ -58,6 +68,7 @@ public:
 private:
 	// シーン内のゲームオブジェクトリスト
 	std::vector<std::unique_ptr<GameObject>> m_gameObjects;
+	// [Player, Enemy1, Enemy2]
 	// 生成直後のゲームオブジェクトリスト
 	std::vector<GameObject*> m_spawnedRequests;
 	// 破棄予定のゲームオブジェクトリスト

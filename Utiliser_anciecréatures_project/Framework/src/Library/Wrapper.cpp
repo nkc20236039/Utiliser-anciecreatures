@@ -63,20 +63,21 @@ bool Library::SetCameraNearFar(float nearClip, float farClip) {
 	int result = DxLib::SetCameraNearFar(nearClip, farClip);
 	return IsSuccessful(result);
 }
-bool Library::SetCameraPositionAndTarget(Library::float3 position, Library::float3 target) {
+bool Library::SetCameraPositionAndTarget(float3 position, float3 target) {
 	int result = DxLib::SetCameraPositionAndTarget_UpVecY(
 		ToDxLibVector(position),
 		ToDxLibVector(target));
 	return IsSuccessful(result);
 }
-bool Library::SetCameraPositionAndTarget(Library::float3 position, Library::float3 target, Library::float3 up) {
+bool Library::SetCameraPositionAndTarget(float3 position, float3 target, float3 up) {
 	int result = DxLib::SetCameraPositionAndTargetAndUpVec(
 		ToDxLibVector(position),
 		ToDxLibVector(target),
 		ToDxLibVector(up));
 	return IsSuccessful(result);
 }
-bool Library::SetCameraPositionAndAngle(Library::float3 position, Library::float3 angle) {
+bool Library::SetCameraPositionAndAngle(float3 position, Quaternion rotate) {
+	float3 angle = rotate.Euler();
 	int result = DxLib::SetCameraPositionAndAngle(
 		ToDxLibVector(position),
 		angle.x,
@@ -110,16 +111,16 @@ bool Library::DrawModel(int modelHandle) {
 }
 
 // モデル基本制御関数
-bool Library::SetPosition(int handle, Library::float3 position) {
+bool Library::SetPosition(int handle, float3 position) {
 	int result = DxLib::MV1SetPosition(handle, ToDxLibVector(position));
 	return IsSuccessful(result);
 }
-bool Library::SetScale(int handle, Library::float3 scale) {
+bool Library::SetScale(int handle, float3 scale) {
 	int result = DxLib::MV1SetScale(handle, ToDxLibVector(scale));
 	return IsSuccessful(result);
 }
-bool Library::SetRotation(int handle, Library::float3 rotation) {
-	int result = DxLib::MV1SetRotationXYZ(handle, ToDxLibVector(rotation));
+bool Library::SetRotation(int handle, Quaternion rotation) {
+	int result = DxLib::MV1SetRotationXYZ(handle, ToDxLibVector(rotation.Euler()));
 	return IsSuccessful(result);
 }
 bool Library::SetVisible(int handle, bool isVisible) {
@@ -253,18 +254,23 @@ bool Library::SetMouseDispFlag(bool flag) {
 	return IsSuccessful(result);
 }
 
-Library::float2 Library::GetMousePoint() {
+float2 Library::GetMousePoint() {
 	int x, y;
 	int result = DxLib::GetMousePoint(&x, &y);
 
 	// ライブラリの戻り値が正常なら座標を返す
 	if (IsSuccessful(result)) {
-		return Library::float2(static_cast<float>(x), static_cast<float>(y));
+		return float2(static_cast<float>(x), static_cast<float>(y));
 	}
 	else {
 		// 異常終了ならゼロベクトルを返す
-		return Library::float2::Zero();
+		return float2::Zero();
 	}
+}
+
+bool Library::SetMousePoint(float2 point) {
+	int result = DxLib::SetMousePoint(static_cast<int>(point.x), static_cast<int>(point.y));
+	return IsSuccessful(result);
 }
 
 std::vector<Library::MouseButton> Library::GetMouseInputAll() {

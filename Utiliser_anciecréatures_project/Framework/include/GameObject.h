@@ -2,65 +2,35 @@
 
 #include <memory>
 
+#include "Mathex.h"
 #include "Library/Wrapper.h"
 #include "GameFrame.h"
 
 class Transform {
 public:
 	Transform()
-		: Position(Library::float3::One()),
-		Scale(Library::float3::Zero()),
-		Rotation(Library::float3::One()) {}
-	Transform(Library::float3 position, Library::float3 scale, Library::float3 rotation)
+		: Position(float3::One()),
+		Scale(float3::Zero()),
+		Rotation(Quaternion::Identity()) {}
+	Transform(float3 position, float3 scale, Quaternion rotation)
 		: Position(position),
 		Scale(scale),
 		Rotation(rotation) {}
 
-	Library::float3 Position;
-	Library::float3 Scale;
-	Library::float3 Rotation;
+	float3 Position;
+	float3 Scale;
+	Quaternion Rotation;
 
-	Library::float3 Forward() const {
-		// ラジアンの回転を取得
-		Library::float3 radians = GetRadianRotation();
-
-		// 前方向ベクトルを計算して返す
-		return Library::float3(
-			std::sin(Rotation.y) * std::cos(Rotation.x),
-			-std::sin(Rotation.x),
-			std::cos(Rotation.y) * std::cos(Rotation.x))
-			.Normalized();
+	float3 Forward() const {
+		return Rotation.Rotate(float3(0, 0, 1));
 	}
 
-	Library::float3 Up() const {
-		// ラジアンの回転を取得
-		Library::float3 radians = GetRadianRotation();
-
-		// 上方向ベクトルを計算して返す
-		return Library::float3(
-			-std::cos(Rotation.y) * std::sin(Rotation.z) + std::sin(Rotation.y) * std::sin(Rotation.x) * std::sin(Rotation.z),
-			std::cos(Rotation.x) * std::cos(Rotation.z),
-			std::sin(Rotation.y) * std::sin(Rotation.z) + std::cos(Rotation.y) * std::sin(Rotation.x) * std::cos(Rotation.z))
-			.Normalized();
+	float3 Up() const {
+		return Rotation.Rotate(float3(0, 1, 0));
 	}
 
-	Library::float3 Right() const {
-		// ラジアンの回転を取得
-		Library::float3 radians = GetRadianRotation();
-		// 右方向ベクトルを計算して返す
-		return Library::float3(
-			std::cos(Rotation.y) * std::cos(Rotation.z) + std::sin(Rotation.y) * std::sin(Rotation.x) * std::sin(Rotation.z),
-			-std::cos(Rotation.x) * std::sin(Rotation.z),
-			-std::sin(Rotation.y) * std::cos(Rotation.z) + std::cos(Rotation.y) * std::sin(Rotation.x) * std::sin(Rotation.z))
-			.Normalized();
-	}
-
-private:
-	Library::float3 GetRadianRotation() const {
-		return Library::float3(
-			Rotation.x * UMath::Deg2Rad,
-			Rotation.y * UMath::Deg2Rad,
-			Rotation.z * UMath::Deg2Rad);
+	float3 Right() const {
+		return Rotation.Rotate(float3(1, 0, 0));
 	}
 };
 
@@ -75,8 +45,8 @@ public:
 	/// <summary>
 	/// 位置情報を指定してゲームオブジェクトを生成する
 	/// </summary>
-	GameObject(Library::float3 position, std::string modelPath, bool isActive = true)
-		: m_transform(std::make_shared<Transform>(position, Library::float3::One(), Library::float3::Zero())),	// scaleとrotationはデフォルト値
+	GameObject(float3 position, std::string modelPath, bool isActive = true)
+		: m_transform(std::make_shared<Transform>(position, float3::One(), Quaternion::Identity())),	// scaleとrotationはデフォルト値
 		m_modelHandle(Library::LoadModel(modelPath)) {}
 
 	/// <summary>

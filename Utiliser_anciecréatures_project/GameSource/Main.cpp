@@ -10,7 +10,7 @@ int WINAPI WinMain(
 	_In_opt_ HINSTANCE hPrevInstance,
 	_In_ LPSTR lpCmdLine,
 	_In_ int nShowCmd) {
-	SceneManager::Get().ChangeScene<GameScene>();
+	SceneManager::GetInstance().ChangeScene<GameScene>();
 
 	// フレームワークの起動
 	UFramework::FrameworkRoot framework;

@@ -155,11 +155,12 @@
     <ClCompile Include="Framework\src\GameObject\GameObject.cpp" />
     <ClCompile Include="Framework\src\InputManager\InputManager.cpp" />
     <ClCompile Include="Framework\src\InputManager\InputSystem.cpp" />
-    <ClCompile Include="Framework\src\Library\MathWrapper.cpp" />
     <ClCompile Include="Framework\src\Frame\FrameManager.cpp" />
     <ClCompile Include="Framework\src\GameObject\GameObjectManager.cpp" />
     <ClCompile Include="Framework\src\Library\Wrapper.cpp" />
     <ClCompile Include="Framework\src\MasterData\MasterData.cpp" />
+    <ClCompile Include="Framework\src\System\ApplicationManager.cpp" />
+    <ClCompile Include="Framework\src\UMath\Structs.cpp" />
     <ClCompile Include="GameSource\Global\Camera\FreeCamera.cpp" />
     <ClCompile Include="GameSource\Scenes\GameScene.cpp" />
     <ClCompile Include="GameSource\Scenes\TitleScene.cpp" />
@@ -170,12 +171,12 @@
     <ClCompile Include="Framework\src\System\OutputLog.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Framework\include\AppricationManager.h" />
+    <ClInclude Include="Framework\include\ApplicationManager.h" />
     <ClInclude Include="Framework\include\Camera.h" />
     <ClInclude Include="Framework\include\InputSystem.h" />
     <ClInclude Include="Framework\include\Library\InputMap.h" />
-    <ClInclude Include="Framework\include\Library\MathWrapper.h" />
     <ClInclude Include="Framework\include\Library\Wrapper.h" />
+    <ClInclude Include="Framework\include\UMath\Structs.h" />
     <ClInclude Include="Framework\src\Frame\FrameManager.h" />
     <ClInclude Include="Framework\include\GameFrame.h" />
     <ClInclude Include="Framework\include\GameObject.h" />
@@ -183,6 +184,7 @@
     <ClInclude Include="Framework\src\InputManager\InputManager.h" />
     <ClInclude Include="Framework\src\Library\Converter.h" />
     <ClInclude Include="Framework\include\Delegate.h" />
+    <ClInclude Include="Framework\include\Mathex.h" />
     <ClInclude Include="GameSource\GameScene\Player\PlayerMain.h" />
     <ClInclude Include="GameSource\Global\Camera\FreeCamera.h" />
     <ClInclude Include="GameSource\Scenes.h" />

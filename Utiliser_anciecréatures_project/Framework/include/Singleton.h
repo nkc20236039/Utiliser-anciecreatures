@@ -1,14 +1,12 @@
 ﻿#pragma once
 
-#include <memory>
-
 template<typename T>
 class Singleton {
 public:
 	/// <summary>
 	/// シングルトンインスタンスを取得
 	/// </summary>
-	inline static T& Get() {
+	inline static T& GetInstance() {
 		// インスタンスがなければ生成
 		if (m_instance == nullptr) {
 			m_instance = new T();

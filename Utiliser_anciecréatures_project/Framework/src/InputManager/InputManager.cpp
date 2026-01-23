@@ -4,5 +4,5 @@
 
 void InputManager::Update() {
 	// InputSystemの更新を行う
-	InputSystem::Get().Update();
+	InputSystem::GetInstance().Update();
 }

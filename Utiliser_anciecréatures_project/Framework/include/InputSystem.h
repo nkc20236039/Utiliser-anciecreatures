@@ -1,8 +1,6 @@
 ﻿#pragma once
 
 #include <vector>
-#include <memory>
-#include <unordered_set>
 
 #include "Library/Wrapper.h"
 #include "Singleton.h"
@@ -49,14 +47,14 @@ public:
 	/// マウスの現在座標を取得する
 	/// </summary>
 	/// <returns></returns>
-	Library::float2 GetMousePosition() {
+	float2 GetMousePosition() {
 		return Library::GetMousePoint();
 	}
 	/// <summary>
 	/// マウスの移動量を取得する
 	/// </summary>
 	/// <returns></returns>
-	Library::float2 GetMouseDelta();
+	float2 GetMouseDelta();
 private:
 	enum class InputState {
 		Down,
@@ -123,7 +121,7 @@ private:
 	InputSystem();
 	~InputSystem() = default;
 
-	Library::float2			m_lastMousePos = Library::float2::Zero();	// 前回のフレームのマウス座標
+	float2			m_previousMousePoint = float2::Zero();	// 前回のフレームのマウス座標
 	std::vector<InputData>	m_newInputTempData;		// 新しい入力を一時的に保存するvector
 	std::vector<InputData>	m_pressingButtonData;	// 押されているボタンの状態を保存するvector
 

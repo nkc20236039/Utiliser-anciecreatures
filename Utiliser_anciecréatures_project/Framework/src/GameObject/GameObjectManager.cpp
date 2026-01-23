@@ -45,7 +45,7 @@ void GameObjectManager::ProcessDestroy() {
 		auto it = std::remove_if(
 			m_gameObjects.begin(),
 			m_gameObjects.end(),
-			[&](auto& objectPtr) {
+			[gameObject](auto& objectPtr) {
 				return objectPtr.get() == gameObject;
 			}
 		);

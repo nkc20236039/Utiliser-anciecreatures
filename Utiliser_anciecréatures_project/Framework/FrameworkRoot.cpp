@@ -4,6 +4,7 @@
 #include "Library/Wrapper.h"
 #include "OutputLog.h"
 #include "SceneManager.h"
+#include "ApplicationManager.h"
 
 using namespace UFramework;
 using json = nlohmann::json;
@@ -29,14 +30,14 @@ bool FrameworkRoot::Run() {
 // private:
 bool FrameworkRoot::Initialize() {
 	// マスターデータの読み込み
-	if (!MasterData::Get().Initialize("Assets/MasterData")) {
+	if (!MasterData::GetInstance().Initialize("Assets/MasterData")) {
 		return false;
 	}
-	MasterData::Get().SetDefaultPath("Assets/MasterData");
+	MasterData::GetInstance().SetDefaultPath("Assets/MasterData");
 
 	/* アプリ設定 */
 	// データの取得
-	json appConfig = MasterData::Get().Load("AppConfig.json");
+	json appConfig = MasterData::GetInstance().Load("AppConfig.json");
 
 	// ログ出力
 	Library::SetOutApplicationLogValidFlag(appConfig.at("LogOutput").get<bool>());
@@ -45,13 +46,16 @@ bool FrameworkRoot::Initialize() {
 	// フルスクリーン設定
 	int width = appConfig.at("WindowWidth").get<int>();
 	int height = appConfig.at("WindowHeight").get<int>();
-	Library::SetGraphMode(width, height, appConfig.at("ColorBit").get<int>());
-	if (appConfig.at("FullScreen").get<bool>()) {
+	int colorBit = appConfig.at("ColorBit").get<int>();
+	ApplicationManager::GetInstance().SetWindowSize(width, height, colorBit);
+
+	bool isFullScreen = appConfig.at("FullScreen").get<bool>();
+	Library::ChangeWindowMode(!isFullScreen);
+
+	if (isFullScreen) {
 		Library::SetFullScreenResolutionMode(Library::ResolutionMode::Native);
 	}
 	else {
-		Library::ChangeWindowMode(true);
-		Library::SetWindowSize(width, height);
 		Library::SetWindowSizeExtendRate(1);
 	}
 
@@ -75,7 +79,6 @@ bool FrameworkRoot::Initialize() {
 		return false;
 	}
 
-
 	// フレームマネージャーの生成
 	// 最初の画面表示までのフレーム時間を計測
 	m_frameManager.MeasurementStart();
@@ -92,11 +95,13 @@ bool FrameworkRoot::MainLoop() {
 	// 画面をクリア
 	Library::ClearDrawScreen();
 
+
 	// 入力の更新
 	m_inputManager.Update();
 
+
 	// シーンの更新
-	SceneManager::Get().Update(time);
+	SceneManager::GetInstance().Update(time);
 
 #if _DEBUG
 	// 0.1秒ごとにFPSを表示
@@ -111,6 +116,11 @@ bool FrameworkRoot::MainLoop() {
 
 	// フレーム時間の計測終了
 	time = m_frameManager.MeasurementEnd();
+
+	// カーソルロック
+	if (ApplicationManager::GetInstance().GetCursorLockFlag()) {
+		ApplicationManager::GetInstance().SetCursorToCenter();
+	}
 
 	return true;
 }

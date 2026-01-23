@@ -4,7 +4,7 @@
 #include <string>
 
 #include "InputMap.h"
-#include "MathWrapper.h"
+#include "UMath/Structs.h"
 
 namespace Library {
 enum class ScreenTarget {
@@ -71,7 +71,7 @@ bool SetWriteZBuffer3D(bool);
 bool SetCameraNearFar(float, float);
 bool SetCameraPositionAndTarget(float3, float3);
 bool SetCameraPositionAndTarget(float3, float3, float3);
-bool SetCameraPositionAndAngle(float3, float3);
+bool SetCameraPositionAndAngle(float3, Quaternion);
 bool SetupCameraPerspective(float);
 
 // モデルの読み込み・複製関係の関数
@@ -85,7 +85,7 @@ bool DrawModel(int);
 // モデル基本制御関数
 bool SetPosition(int, float3);
 bool SetScale(int, float3);
-bool SetRotation(int, float3);
+bool SetRotation(int, Quaternion);
 bool SetVisible(int, bool);
 bool SetUseModelZBuffer(int, bool);
 bool SetWriteModelZBuffer(int, bool);
@@ -121,7 +121,8 @@ bool CheckHitKey(KeyCode);
 std::vector<KeyCode> GetHitKeyStateAll();
 bool SetUseDirectInputFlag(bool);
 bool SetMouseDispFlag(bool);
-Library::float2 GetMousePoint();
+float2 GetMousePoint();
+bool SetMousePoint(float2);
 std::vector<MouseButton> GetMouseInputAll();
 
 // マイナー関数

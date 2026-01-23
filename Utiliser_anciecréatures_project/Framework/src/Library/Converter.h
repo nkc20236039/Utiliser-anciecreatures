@@ -11,7 +11,7 @@ inline bool IsSuccessful(int result) {
 	return result == 0;
 }
 
-inline DxLib::VECTOR ToDxLibVector(const Library::float3& vec) {
+inline DxLib::VECTOR ToDxLibVector(const float3& vec) {
 	DxLib::VECTOR dxVec;
 	dxVec.x = vec.x;
 	dxVec.y = vec.y;

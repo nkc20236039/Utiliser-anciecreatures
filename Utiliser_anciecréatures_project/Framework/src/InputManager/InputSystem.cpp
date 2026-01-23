@@ -1,5 +1,7 @@
 ﻿#include "InputSystem.h"
 
+#include "ApplicationManager.h"
+
 InputSystem::InputSystem() {
 	Library::SetUseDirectInputFlag(true);
 }
@@ -100,7 +102,6 @@ void InputSystem::Update() {
 bool InputSystem::IsButtonStateMatch(InputData id, InputState state) {
 	// 現在押されているキーの中から該当するものを線形探索
 	// * 要素が少ないことが想定されるため線形探索で十分と判断
-	int size = m_pressingButtonData.size();
 	for (auto& pressingData : m_pressingButtonData) {
 		if (pressingData.IsStateMatch(id, state)) {
 			return true;
@@ -109,9 +110,19 @@ bool InputSystem::IsButtonStateMatch(InputData id, InputState state) {
 	return false;
 }
 
-Library::float2 InputSystem::GetMouseDelta() {
-	Library::float2 currentMousePos = Library::GetMousePoint();
-	Library::float2 delta = currentMousePos - m_lastMousePos;
-	m_lastMousePos = currentMousePos;
-	return delta;
+float2 InputSystem::GetMouseDelta() {
+	// 現在のマウス座標を取得する
+	float2 currentMousePoint = Library::GetMousePoint();
+
+	if (ApplicationManager::GetInstance().GetCursorLockFlag()) {
+		// マウスカーソルがロックされていない場合
+		float2 delta = currentMousePoint - ApplicationManager::GetInstance().GetWindowCenter();
+		return delta;
+	}
+	else {
+		// マウスカーソルがロックされていない場合
+		float2 delta = currentMousePoint - m_previousMousePoint;
+		m_previousMousePoint = currentMousePoint;
+		return delta;
+	}
 }
